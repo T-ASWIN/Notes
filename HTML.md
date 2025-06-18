@@ -214,3 +214,87 @@ Use `target="_blank"` to open in a new tab.
 * Scale in `<meta>` controls zoom on mobile.
 
 ---
+
+
+---
+
+### 🔹 HTML Registration Form 
+
+1. **Basic Setup**
+
+```html
+<!DOCTYPE html> → Declares HTML5  
+<meta charset="UTF-8"> → Supports special characters  
+<meta name="viewport"> → Responsive layout  
+<title>Form</title> → Page title
+```
+
+---
+
+2. **Form Tag**
+
+```html
+<form action="./submit" method="get">
+```
+
+* `action`: Where data goes
+* `method="get"`: Sends data in URL
+
+---
+
+3. **Input Fields**
+
+```html
+<input type="text"> → Name  
+<input type="email"> → Email  
+<input type="number"> → Age  
+<input type="date"> → DOB  
+<input type="password"> → Password  
+<input type="file"> → Resume Upload
+```
+
+---
+
+4. **Dropdowns**
+
+```html
+<select id="gender"> → Gender  
+<optgroup> → Groups time slots  
+<select id="time"> → Select Time
+```
+
+---
+
+5. **Textarea**
+
+```html
+<textarea> → For 'About Yourself'
+```
+
+---
+
+6. **Radio Buttons**
+
+```html
+<input type="radio" name="fav_language"> → Choose one language
+```
+
+---
+
+7. **Checkboxes**
+
+```html
+<input type="checkbox" name="skills"> → Multiple skill selection
+```
+
+---
+
+8. **Buttons**
+
+```html
+<input type="submit"> → Submit form  
+<input type="reset"> → Reset form
+```
+
+---
+
