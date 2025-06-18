@@ -2,6 +2,7 @@
 2)Strict mode
 3)Updating the array or object
 4)Return
+5)Event Handling
 
 
 1) State is just a way to store data inside a component — like a variable that can change and automatically update the UI when it does.
@@ -118,4 +119,68 @@ example:
    When you use return inside a function, it immediately stops the function from running further.
 
    if (!input.trim()) return;
+
+5)event handling
+
+In **React**, when you use `event.target.value`, you're capturing **what the user typed or selected** — and you can:
+
+Store it -> in a state variable (`useState`)
+Print it ->to the console (`console.log()`)
+Send it ->to a server (`fetch` or `axios`)
+Use it ->to update UI instantly
+
+code:
+
+<input
+  type="text"
+  onChange={(event) => console.log(event.target.value)}
+/>
+
+
+output:
+A
+As
+Asw
+Aswi
+Aswin
+```
+
+Because every keystroke triggers `onChange`, and `event.target.value` gives you the latest value typed in the input box.
+
+import { useState } from 'react';
+
+function MyForm() {
+  const [name, setName] = useState('');
+
+  function handleChange(event) {
+    console.log(event.target.value); // shows what user typed
+    setName(event.target.value);     // stores it in state
+  }
+
+  return (
+    <div>
+      <input type="text" onChange={handleChange} />
+      <p>Hello, {name}</p>
+    </div>
+  );
+}
+
+output:
+
+ You type: `Aswin`
+ It logs to the console.
+ `name` gets updated.
+ It shows: `Hello, Aswin`
+
+
+
+| Concept                | Meaning                                   |
+| ---------------------- | ----------------------------------------- |
+| `event`                | The full event info from the browser      |
+| `event.target`         | The exact input field that was interacted |
+| `event.target.value`   | What the user typed                       |
+| Store it in `useState` | To keep the data and use it later         |
+
+
+
 
