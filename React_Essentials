@@ -1,0 +1,121 @@
+1)State
+2)Strict mode
+3)Updating the array or object
+4)Return
+
+
+1) State is just a way to store data inside a component — like a variable that can change and automatically update the UI when it does.
+
+`
+const [count, setCount] = useState(0);
+
+
+ `count` → your current value (like a variable)
+ `setCount` → a function to change the value
+ `useState(0)` → sets the initial value
+
+
+ 🔁 Why do we use State?
+
+Imagine a counter app:
+
+
+<button onClick={() => setCount(count + 1)}>Click Me</button>
+
+
+Every time you click, React:
+
+1. Changes the value
+2. Re-renders the UI with the **new value**
+
+So:
+🖱️ You click → 🧠 State changes → 🖼️ UI updates automatically
+
+
+
+ ✅ When to use State (and which one to use)
+
+| Situation                            | Should I use `useState`? | Example value stored                |
+| ------------------------------------ | ------------------------ | ----------------------------------- |
+| User input (text, email, etc.)       | ✅ Yes                    | `name`, `email`, `password`         |
+| Button clicks / toggles              | ✅ Yes                    | `isVisible`, `isDarkMode`, `count`  |
+| Conditional display (like error msg) | ✅ Yes                    | `errorShown`, `formSubmitted`       |
+| Data from backend (once fetched)     | ✅ Yes (initially empty)  | `products`, `userProfile`, `posts`  |
+| Fixed data that never changes        | ❌ No (use `const`)       | API key, heading text, static links |
+
+
+
+💡 Remember:
+
+ `useState` is for changing data
+ When state changes, the component re-renders
+You can have **many `useState` in one component
+
+
+
+ 🧪 Real Example: Login Form
+
+
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [submitted, setSubmitted] = useState(false);
+const [error, setError] = useState('');
+
+
+⚠️ Don't use state when:
+
+ The data will **never change**
+ It's calculated on the fly from props
+
+2)Strict mode
+
+ -->build in component
+
+there are two ways to use Strict mode
+
+  1)in index.jsx
+     
+    <React.StrictMode>
+    <App />
+   </React.StrictMode>
+
+ -->we just need to import React from'react';
+
+
+   2)
+
+    <StrictMode>
+    <App />
+    </StrictMode>
+
+    -->but we need to import {StrictMode} from 'react';
+       and also need to use wrapping component like 
+       <StrictMode>
+       </StrictMode>
+
+strictmode is used to excute every component function twice
+
+All of these checks are development-only and do not impact the production build.
+
+
+3) creating new array for old array OR Updating the array or object
+
+function(prev) {
+  return [...prev, newItem];
+}
+
+example:
+
+   function addTodo(task) {
+  setTodos((prev) => [
+    ...prev,
+    { id: Date.now(), task, completed: false }
+  ]);
+}
+
+4) Return
+
+   When you use return inside a function, it immediately stops the function from running further.
+
+   if (!input.trim()) return;
+
