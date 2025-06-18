@@ -1,4 +1,4 @@
----
+
 
 ## 🌐 HTML & Web Essentials
 
@@ -11,7 +11,6 @@
 <a href="https://example.com">Visit Site</a>
 ```
 
----
 
 ### 2️⃣ `<pre>` Tag
 
