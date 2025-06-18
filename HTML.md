@@ -216,8 +216,6 @@ Use `target="_blank"` to open in a new tab.
 ---
 
 
----
-
 ### 🔹 HTML Registration Form 
 
 1. **Basic Setup**
