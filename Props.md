@@ -292,7 +292,8 @@ function FormInput({ name, onNameChange }) {
 
 ---
 
-#### lifting state up
+### lifting state up
+
 In **React**, if a **child component needs to update or communicate data to the parent**, the parent passes **a callback function** as a **prop** to the child. The child can then **call that function** and pass the desired data back to the parent.
 
 ---
