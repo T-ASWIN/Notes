@@ -176,5 +176,4 @@ export default App;
 
 ---
 
-Would you like to learn about **Portals** next?
 
