@@ -354,5 +354,57 @@ export default Child;
 * Yes, **you need to use a function in the parent and pass it to the child**.
 * This is called **“lifting state up”**, a common React pattern to share data between child and parent.
 
-Let me know if you want an example with input fields or more complex data!
+
+
+
+
+
+---
+
+### ✅ **General Rule:**
+
+> **We don’t use props to get data *from* a child component.**
+>
+> Instead, we pass a **function as a prop to the child**, and the child calls it to send data back.
+
+---
+
+### 🔄 How data flows in React:
+
+| Direction      | How It Works                                                                        |
+| -------------- | ----------------------------------------------------------------------------------- |
+| Parent ➝ Child | **Use props** to send data or functions                                             |
+| Child ➝ Parent | **Use a function (callback) passed as a prop**, and the child calls it to send data |
+
+---
+
+### ✅ Example: Child sends data to parent
+
+```jsx
+// Parent
+function Parent() {
+  function handleDataFromChild(data) {
+    console.log("Got data:", data);
+  }
+
+  return <Child onSendData={handleDataFromChild} />;
+}
+```
+
+```jsx
+// Child
+function Child({ onSendData }) {
+  return (
+    <button onClick={() => onSendData("Hello from Child")}>
+      Send Data
+    </button>
+  );
+}
+```
+
+* ❌ You’re **not** using `props` to receive anything from the child.
+* ✅ You're using a **function** passed from the parent to let the child report back.
+
+---
+
 
