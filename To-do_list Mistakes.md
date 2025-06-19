@@ -23,5 +23,63 @@
    You're comparing `'Green'`, `'Red'`, etc., but setting the state as lowercase `'green'` etc.
    👉 Hint: Make sure the case matches when comparing strings.
 
+
 ---
+
+### ✅ **When to use props**
+
+#### 1. **Passing value from Parent ➝ Child:**
+
+You use **props** when the **parent** wants to send data or functions to the **child**.
+
+**Example:**
+
+```jsx
+<Child username="Aswin" />
+```
+
+Here, `username` is a prop. The child can now use it like:
+
+```jsx
+function Child({ username }) {
+  return <p>{username}</p>;
+}
+```
+
+---
+
+### ❌ **Unnecessary prop**
+
+If the **child** does not use a prop (like `value` in your code), **you don't need to pass it**.
+
+---
+
+### 🔁 **Sending value from Child ➝ Parent**
+
+To send data **from child to parent**, you don’t need to pass a value —
+You pass a **function as a prop** from the parent, and the child **calls** that function with the data.
+
+**Example:**
+
+```jsx
+// Parent
+<Test1Child onColorSelect={handleColorSelect} />
+```
+
+```jsx
+// Child
+<select onChange={(e) => onColorSelect(e.target.value)}></select>
+```
+
+Here, `onColorSelect` is a function passed as a prop from parent, and the child is giving data *back* to the parent by calling it.
+
+---
+
+### ✅ Final Rule:
+
+* ✅ **Use props** when: Parent ➝ Child (data or function)
+* ✅ **Use callback functions** (passed as props) when: Child ➝ Parent (data via function)
+* ❌ Don’t pass props if the child doesn’t use them
+
+
 
