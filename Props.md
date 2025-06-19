@@ -405,6 +405,65 @@ function Child({ onSendData }) {
 * ❌ You’re **not** using `props` to receive anything from the child.
 * ✅ You're using a **function** passed from the parent to let the child report back.
 
+
 ---
 
+### ✅ In the Parent Component, You Typically Pass:
+
+1. **State values**
+
+   * Example: current count, selected option, user input
+2. **Functions (handlers)**
+
+   * Example: `onClick`, `onChange`, custom callbacks to update parent state
+
+You pass these as **props** to the child.
+
+---
+
+### 👇 Example
+
+```jsx
+// ✅ Parent
+function Parent() {
+  const [message, setMessage] = useState("");
+
+  function updateMessage(newMessage) {
+    setMessage(newMessage);
+  }
+
+  return <Child text={message} onUpdate={updateMessage} />;
+}
+```
+
+```jsx
+// ✅ Child
+function Child({ text, onUpdate }) {
+  return (
+    <>
+      <p>{text}</p>
+      <button onClick={() => onUpdate("Hello from child")}>
+        Send Back
+      </button>
+    </>
+  );
+}
+```
+
+---
+
+### 💡 Key Takeaway
+
+✅ In Parent ➝ Pass:
+
+* ✅ State variables (to **show** something in child)
+* ✅ Functions (to **control** or **update** from child)
+
+❌ You **don't** get values *from* child using props directly.
+
+Instead:
+
+* ✅ You let the **child trigger a function** to send data **up**.
+
+---
 
