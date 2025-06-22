@@ -509,6 +509,178 @@ minlength ="8"
 </html>
 
 ```
+---
 
+### ✅ 1. `readonly`
 
+* 🟢 **What it does:** You can see and **copy** the input, but **can’t change** it.
+* 🧠 **Use it when**: You want to show a value that the user should **not edit**, like a generated ID.
 
+```html
+<input type="text" value="Read Only Name" readonly>
+```
+
+---
+
+### ✅ 2. `hidden`
+
+* 🟢 **What it does:** Completely **hides** the element from the page.
+* 🧠 **Use it when**: You want to store data that should not be seen (e.g., user ID).
+
+```html
+<input type="text" value="Hidden Data" hidden>
+```
+
+> 📌 Note: It's not shown on the page, but its value can still be submitted with the form.
+
+---
+
+### ✅ 3. `disabled`
+
+* 🟢 **What it does:** Input is **grayed out**, and you **can’t click, type, or submit** it.
+* 🧠 **Use it when**: The option is **temporarily unavailable**.
+
+```html
+<input type="text" value="Disabled Input" disabled>
+```
+
+> ❗ Note: Unlike `readonly`, `disabled` inputs **do not get submitted** in a form.
+
+---
+
+### 🟨 Summary Table:
+
+| Attribute  | Visible?       | Editable? | Submittable? |
+| ---------- | -------------- | --------- | ------------ |
+| `readonly` | ✅ Yes          | ❌ No      | ✅ Yes        |
+| `hidden`   | ❌ No           | ❌ No      | ✅ Yes        |
+| `disabled` | ✅ Yes (grayed) | ❌ No      | ❌ No         |
+
+---
+
+### ✅ 1. `<nav>` – Navigation
+
+* 🟢 **Used for:** Menus or links to move around the website
+* 🧠 **Think of:** A navbar or sidebar with links
+
+```html
+<nav>
+  <a href="#home">Home</a> |
+  <a href="#about">About</a> |
+  <a href="#contact">Contact</a>
+</nav>
+```
+
+---
+
+### ✅ 2. `<header>` – Top Section
+
+* 🟢 **Used for:** Page or section titles, logos, or top content
+* 🧠 **Think of:** The top part of a page like a newspaper headline
+
+```html
+<header>
+  <h1>My Blog</h1>
+  <p>Welcome to my website</p>
+</header>
+```
+
+---
+
+### ✅ 3. `<section>` – Group of Content
+
+* 🟢 **Used for:** Dividing content into sections by topic
+* 🧠 **Think of:** Each chapter in a book
+
+```html
+<section>
+  <h2>Services</h2>
+  <p>We offer web design, SEO, and development.</p>
+</section>
+```
+
+---
+
+### ✅ 4. `<article>` – Independent Content
+
+* 🟢 **Used for:** Standalone content like blog posts, news, reviews
+* 🧠 **Think of:** A full blog post or news article
+
+```html
+<article>
+  <h2>Tips to Learn HTML</h2>
+  <p>Start with basic tags like p, h1, and img...</p>
+</article>
+```
+
+---
+
+### ✅ 5. `<footer>` – Bottom Section
+
+* 🟢 **Used for:** Copyright info, contact links, or social media
+* 🧠 **Think of:** The bottom of a newspaper or website
+
+```html
+<footer>
+  <p>&copy; 2025 My Website. All rights reserved.</p>
+</footer>
+```
+
+---
+
+### 📌 Summary Table:
+
+| Tag         | Purpose                  | Real-World Meaning     |
+| ----------- | ------------------------ | ---------------------- |
+| `<nav>`     | Navigation links         | Table of contents/menu |
+| `<header>`  | Top section/title/logo   | Newspaper heading      |
+| `<section>` | Logical block of content | Book chapter           |
+| `<article>` | Self-contained content   | Blog/news post         |
+| `<footer>`  | Bottom info or links     | Page footer            |
+
+---
+
+### ✅ `<aside>` – **Side Content**
+
+---
+
+#### 🔹 **What it does:**
+
+The `<aside>` tag is used to show **extra content** that is **related but not essential** to the main content.
+
+---
+
+#### 🧠 **Think of it like:**
+
+> A **sidebar** on a blog or news website that shows ads, tips, author info, or links to related articles.
+
+---
+
+### 🧾 Example:
+
+```html
+<main>
+  <article>
+    <h2>How to Learn HTML</h2>
+    <p>Start by understanding the basic tags like p, h1, a, and img...</p>
+  </article>
+
+  <aside>
+    <h3>Related Tips</h3>
+    <ul>
+      <li><a href="#">Best HTML editors</a></li>
+      <li><a href="#">Top HTML interview questions</a></li>
+    </ul>
+  </aside>
+</main>
+```
+
+---
+
+### ✅ Summary:
+
+| Tag       | Purpose                     | Where it's used                    |
+| --------- | --------------------------- | ---------------------------------- |
+| `<aside>` | Shows extra or side content | Sidebars, tips, related links, ads |
+
+---
