@@ -171,13 +171,41 @@ Use `target="_blank"` to open in a new tab.
 * **Unordered List `<ul>`**
 * **Description List:**
 
+In HTML, a description list is used to define a list of terms and their descriptions. It is created using the <dl> (description list) element, along with <dt> (description term) and <dd> (description definition) elements.
+
+Here’s an example:
+
 ```html
-<dl>
-  <dt>HTML</dt>
-  <dd>Markup language</dd>
-</dl>
+Copy the code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description List Example</title>
+</head>
+<body>
+    <h2>HTML Description List</h2>
+    <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language, the standard language for creating web pages.</dd>
+
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets, used to style and layout web pages.</dd>
+
+        <dt>JavaScript</dt>
+        <dd>A programming language that enables interactive web features.</dd>
+    </dl>
+</body>
+</html>
+
+Explanation:
+<dl>: Wraps the entire description list.
+<dt>: Represents the term or name.
+<dd>: Provides the description or definition of the term.
 ```
 
+This structure is particularly useful for glossaries, FAQs, or any content requiring term-definition pairs.
 ---
 
 ### 11️⃣ Media Tags
