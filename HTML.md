@@ -345,4 +345,170 @@ Let me know if you'd like a visual version (image/PDF/markdown file) of this for
 ```
 
 ---
+9. **required**
+this field is need to be filled
+
+```html
+required
+```
+
+---
+10. **Pattern**
+pattern is used to set rules to the input
+
+```html
+pattern ="[a-zA-Z .]+"
+```
+---
+11. **Pattern in Number**
+
+```html
+pattern ="[6789]{1}[0-9]{9}"
+```
+
+---
+12. **Number restriction**
+set limitation to number value
+
+```html
+min ="1" max = "100"
+```
+---
+13. **Password Restriction**
+
+```html
+minlength ="8"
+```
+
+
+## Example Code
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            margin: auto;
+            padding: 40px;
+            border: 2px solid #6d3434;
+            border-radius: 60px;
+            background-color: #d7d3d3;
+        }
+        td {
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="" method="get">
+        <table>
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" id="name" placeholder="Enter Name" required pattern ="[a-zA-Z .]+"></td>
+            </tr>
+            <tr>
+                <td><label for="Email">Email</label></td>
+                <td><input type="email" id="Email" placeholder="Enter Email"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age</label></td>
+                <td><input type="number" id="age" placeholder="Enter age" min ="1" max = "100" value="20" read only></td>
+            </tr>
+            <tr>
+                <td><label for="dob">Date of Birth</label></td>
+                <td><input type="date" id="dob" ></td>
+            </tr>
+            <tr>
+                <td><label for ="PhoneNumber">Phone Number</label></td>
+                <td><input type ="text" id="PhoneNumber" pattern ="[6789]{1}[0-9]{9}"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="password" id="password" placeholder="Enter password" required minlength ="8"></td>
+            </tr>
+            <tr>
+                <td><label for="Resume">Upload Resume</label></td>
+                <td><input type="file" id="Resume"></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Gender</label></td>
+                <td>
+                    <select id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for ="range">Range</label></td>
+                <td><input type ="range" id ="range"></td>
+            </tr>
+            <tr>
+                <td><label for="message">About Yourself</label></td>
+                <td><textarea id="message" rows="4" cols="40" placeholder="50 Words Minimum"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="time">Choose Time</label></td>
+                <td>
+                    <select id="time" name="time">
+                        <optgroup label="Morning">
+                            <option value="9:00">9:00</option>
+                            <option value="10:00">10:00</option>
+                        </optgroup>
+                        <optgroup label="Afternoon">
+                            <option value="1:00">1:00</option>
+                            <option value="2:00">2:00</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Favorite Web Language:</td>
+                <td>
+                    <input type="radio" id="html" name="fav_language" value="HTML">
+                    <label for="html">HTML</label><br>
+                    <input type="radio" id="css" name="fav_language" value="CSS">
+                    <label for="css">CSS</label><br>
+                    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Select The Skills You Know:</td>
+                <td>
+                    <input type="checkbox" id="github" name="skills" value="github">
+                    <label for="github">GitHub</label><br>
+                    <input type="checkbox" id="Communication" name="skills" value="Communication">
+                    <label for="Communication">Communication</label><br>
+                    <input type="checkbox" id="Apptitude" name="skills" value="Apptitude">
+                    <label for="Apptitude">Aptitude</label>
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset Form">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+```
+
+
 
