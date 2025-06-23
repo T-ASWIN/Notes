@@ -6,6 +6,8 @@
 
 4)behavior of HTML tags
 
+---
+
 ## 🌐 HTML & Web Essentials
 
 ### 1️⃣ Anchor Tags and `href`
