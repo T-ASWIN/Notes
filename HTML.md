@@ -684,3 +684,71 @@ The `<aside>` tag is used to show **extra content** that is **related but not es
 | `<aside>` | Shows extra or side content | Sidebars, tips, related links, ads |
 
 ---
+
+### 1️⃣ **Inline Elements**
+
+* 👀 Only take up as much **width as needed**
+* 🧱 Appear **next to each other** (in the same line)
+* 🎯 Example: `<a>`, `<span>`, `<strong>`, `<img>`
+
+```html
+<p>This is <strong>inline</strong> text.</p>
+```
+
+➡️ The word **"inline"** appears on the **same line** as the rest of the text.
+
+---
+
+### 2️⃣ **Block Elements**
+
+* 📦 Take up **full width** of the page
+* 📥 Always start on a **new line**
+* 🧱 Example: `<div>`, `<p>`, `<h1>` to `<h6>`, `<section>`
+
+```html
+<p>This is a paragraph.</p>
+<p>This is another one.</p>
+```
+
+➡️ Each paragraph appears on a **new line**.
+
+---
+
+### 3️⃣ **Self-Closing Tags**
+
+* ✂ No separate closing tag
+* ✅ Often used for elements that **don’t hold content**
+* 🧱 Example: `<img>`, `<br>`, `<hr>`, `<input>`
+
+```html
+<img src="cat.jpg" alt="cat">
+<br>
+<hr>
+```
+
+➡️ These tags are **short** and **stand alone**.
+
+---
+
+### 4️⃣ **Open and Closing Tags**
+
+* 🧩 Most elements need an **opening and closing pair**
+* 📦 Closing tag has a **slash `/`**
+* 🧱 Example: `<p>content</p>`, `<h1>title</h1>`
+
+```html
+<p>This is a paragraph.</p>
+```
+
+---
+
+### 📝 Summary Table
+
+| Type             | Tag Format               | Example               |
+| ---------------- | ------------------------ | --------------------- |
+| Inline Element   | On the same line         | `<a>Link</a>`         |
+| Block Element    | Starts on new line       | `<div>Box</div>`      |
+| Self-Closing Tag | No content inside        | `<img src="cat.jpg">` |
+| Open/Close Tag   | Opening + closing needed | `<p>Text</p>`         |
+
+---
