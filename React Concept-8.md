@@ -240,3 +240,61 @@ export default function App() {
 | 🔹 Function used     | `createPortal(child, targetDOMElement)`                   |
 
 ---
+
+```jsx
+{isbutton && <Toast message="Enrolled successfully" />}
+```
+
+---
+
+## ✅ What does `&&` mean in React JSX?
+
+In React, the `&&` operator is often used for **conditional rendering**.
+
+### 📘 Basic JavaScript logic:
+
+In JavaScript, the `&&` operator returns the **second value** if the first one is **truthy**.
+
+```js
+true && "Hello"     // returns "Hello"
+false && "Hello"    // returns false
+```
+
+---
+
+## 👇 Now in React JSX:
+
+```jsx
+{isbutton && <Toast message="Enrolled successfully" />}
+```
+
+This means:
+
+> “If `isbutton` is `true`, then render `<Toast />`.
+> Otherwise, render nothing (`false`).”
+
+So:
+
+* When `isbutton = true` → toast shows ✅
+* When `isbutton = false` → nothing shows ❌
+
+---
+
+## ✅ Visual Example:
+
+| `isbutton` Value | Output                                               |
+| ---------------- | ---------------------------------------------------- |
+| `true`           | `<Toast message="Enrolled successfully" />` is shown |
+| `false`          | Nothing is rendered                                  |
+
+---
+
+## ✨ Summary:
+
+| Concept            | Meaning                               |
+| ------------------ | ------------------------------------- |
+| `condition && JSX` | Show JSX only if condition is true    |
+| What `&&` returns  | Second value (JSX) if first is truthy |
+| JSX benefit        | Clean, short syntax for "if" logic    |
+
+---
