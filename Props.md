@@ -112,6 +112,66 @@ Then you **must use** `props.data` (or `({ data })`) in the child.
 ---
 
 
+---
+
+# 🔧 React Props 
+
+---
+
+## 1️⃣ What are Props?
+
+* Props (short for **properties**) are **read-only** values passed from a **parent** to a **child** component.
+* Props allow components to be **dynamic** and **reusable**.
+
+---
+
+## 2️⃣ Sending Props from Parent to Child
+
+### ✅ Parent Component
+
+```jsx
+<Child name="Sam" age={23} />
+```
+
+### ✅ Child Component
+
+```jsx
+function Child(props) {
+  return (
+    <>
+      <p>Name: {props.name}</p>
+      <p>Age: {props.age}</p>
+    </>
+  );
+}
+```
+
+✅ The `props` object contains all values passed from the parent.
+
+---
+
+## 3️⃣ Props Syntax
+
+| Data Type | How to Pass in JSX            |
+| --------- | ----------------------------- |
+| String    | `name="Sam"`                  |
+| Number    | `age={23}`                    |
+| Boolean   | `isLoggedIn={true}`           |
+| Object    | `user={{ id: 1, name: "A" }}` |
+| Array     | `items={[1, 2, 3]}`           |
+| Function  | `onClick={handleClick}`       |
+
+---
+
+## 🧠 Key Points
+
+* Props are **immutable** – they **cannot be changed** by the child component.
+* Used to **customize child components**.
+* Always passed **top-down** (from parent to child).
+
+---
+
+
 
 Let's walk through multiple **parent-child props examples** — each one step-by-step — in **very simple terms**.
 
