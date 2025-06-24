@@ -1,4 +1,49 @@
-# 🔁 React: Refs & Portals (Simplified)
+# 🔁 React: Refs 
+
+---
+
+# 📌 React: `useRef` & `useState` Notes
+
+---
+
+## 🔁 `useRef` (Reference Hook)
+
+* `useRef()` lets you **store a value** that **does not cause re-renders** when it changes.
+* Use it when you want the component to **remember something** without updating the UI.
+
+---
+
+### ✅ Common Use Cases
+
+1. **Accessing or interacting with DOM elements**
+   *e.g., focus on input, file picker*
+
+2. **Handling animations or transitions**
+   *e.g., detect if element is visible or track position*
+
+3. **Managing timers and intervals**
+   *e.g., `setTimeout`, `setInterval` IDs*
+
+---
+
+### 🧠 Key Point
+
+> **Changing `.current` of a `ref` does NOT re-render the component.**
+
+---
+
+## 🧱 `useState` Object Example
+
+```js
+const [projectState, setProjectState] = useState({
+  selectedProjects: undefined,
+  projects: []
+});
+```
+
+✅ When using `useState` with objects, always **separate keys with commas**.
+
+
 
 ---
 
