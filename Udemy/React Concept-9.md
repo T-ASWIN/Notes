@@ -181,3 +181,73 @@ function Modal({ onClose }) {
 | Loses state/props/context?       | ❌ No — they all work |
 
 ---
+Even **when using a React portal**, you **can still interact** with the modal using your **keyboard** (like `Tab`, `Enter`, or `Escape`), and also access buttons inside the modal using normal keyboard navigation.
+
+Let’s break it down clearly 👇
+
+---
+
+## ✅ Why keyboard access works in portals
+
+Even though a **portal** renders the modal *outside the normal DOM structure* (like outside `#root`), React **still connects it logically** to the app through the **React tree**.
+
+That means:
+
+* You can press **Tab** to move focus into the modal’s inputs or buttons.
+* You can press **Enter** to submit a form inside the modal.
+* You can use **Escape** (if implemented) to close it.
+
+---
+
+## 🧠 Think of it this way:
+
+> Even though the modal is visually moved to a different `div` in the HTML (via `createPortal()`), React *still knows it belongs* to the app, and **the browser doesn’t break keyboard accessibility**.
+
+---
+
+## 🧪 Example
+
+```jsx
+function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setShowModal(true)}>Open Modal</button>
+      {showModal && <Modal onClose={() => setShowModal(false)} />}
+    </>
+  );
+}
+```
+
+```jsx
+function Modal({ onClose }) {
+  return createPortal(
+    <dialog open>
+      <h2>This is a modal</h2>
+      <button onClick={onClose}>Close</button>
+    </dialog>,
+    document.getElementById('modal-root')
+  );
+}
+```
+
+Now:
+
+* When you press `Tab`, it will move into the modal's "Close" button.
+* Pressing `Enter` or `Space` activates the button.
+* If you want to add support for **Escape**, you can listen for `keydown` events.
+
+---
+
+## ✅ Summary
+
+| Feature              | Works with Portal?                    |
+| -------------------- | ------------------------------------- |
+| `Tab` key navigation | ✅ Yes                                 |
+| `Enter` to submit    | ✅ Yes                                 |
+| `Escape` to close    | ✅ If you implement it                 |
+| Focus control        | ✅ Yes (with `ref` or `<dialog>`)      |
+| Accessibility        | ✅ Fully supported (if coded properly) |
+
+---
