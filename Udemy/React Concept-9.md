@@ -310,4 +310,74 @@ Now your modal shows **on top of everything**, and you have **full control**.
 | `ref`          | To call `showModal()` and `close()` on the dialog                     |
 | `createPortal` | To render the modal outside root so it's easy to position and overlay |
 
+
 ---
+
+### 🧪 What happens by default?
+
+If you write:
+
+```jsx
+<dialog open>
+  <p>Hello</p>
+</dialog>
+```
+
+The browser shows a simple popup box centered on the screen with default styles like:
+
+* white background
+* black border
+* no overlay
+* basic positioning
+
+### ✅ So yes — it *works* without CSS.
+
+---
+
+### ❗ But Why Add CSS?
+
+To make it **look better** or **behave more like modern modals**, we usually add styles like:
+
+| Feature                  | Why you add CSS                                           |
+| ------------------------ | --------------------------------------------------------- |
+| Center the box           | Sometimes the default isn’t nicely centered               |
+| Overlay background       | Add a dark background (`rgba(0,0,0,0.5)`) to dim the page |
+| Rounded corners / shadow | Make it look modern                                       |
+| Fullscreen support       | For mobile, you may want the modal to stretch             |
+
+---
+
+### ✅ Example Without CSS
+
+```jsx
+<dialog open>
+  <p>Hello World</p>
+</dialog>
+```
+
+Looks plain but works.
+
+---
+
+### ✅ Example With CSS
+
+```jsx
+<dialog style={{
+  padding: '20px',
+  borderRadius: '10px',
+  border: 'none',
+  boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+}} open>
+  <p>Styled Dialog!</p>
+</dialog>
+```
+
+Looks much better! 😎
+
+---
+
+### ✅ Summary
+
+\| Do you need CSS for `<dialog>`? | ❌ No |
+\| Should you add CSS for a good UI? | ✅ Yes |
+\| Do `showModal()` and `close()` work without CSS? | ✅ 100% |
