@@ -381,3 +381,248 @@ Looks much better! 😎
 \| Do you need CSS for `<dialog>`? | ❌ No |
 \| Should you add CSS for a good UI? | ✅ Yes |
 \| Do `showModal()` and `close()` work without CSS? | ✅ 100% |
+
+
+---
+
+### 🔍 What does `!==` mean in JavaScript?
+
+`!==` means **"not equal value or not equal type"**.
+It is the **strict inequality operator**.
+
+---
+
+### ✅ Simple Example:
+
+```js
+5 !== 6       // true → values are different
+'5' !== 5     // true → same value, but different types (string vs number)
+5 !== 5       // false → same value and type
+```
+
+---
+
+### ✅ Use case in your code:
+
+Inside `handleDeleteProject()`:
+
+```js
+projects: prev.projects.filter(
+  (project) => project.id !== prev.selectedProjectId
+)
+```
+
+This line means:
+
+> “Keep only the projects **where the `id` is not equal** to the `selectedProjectId`”
+
+### 💡 Why use `!==` here?
+
+Because you're trying to **delete the selected project**, so:
+
+* `!==` ensures that the project with the matching ID is **removed**
+* All other projects (with different IDs) are kept
+
+---
+
+### ✅ Difference from `!=` (loose inequality)
+
+| Operator | Checks for                             | Safe to use? |
+| -------- | -------------------------------------- | ------------ |
+| `!=`     | Not equal (but allows type conversion) | ❌ Avoid      |
+| `!==`    | Not equal **and** same type            | ✅ Always use |
+
+```js
+'5' != 5    // true (but misleading)
+'5' !== 5   // true (correct and strict)
+```
+
+---
+
+### ✅ In simple terms:
+
+> Use `!==` when you want to **be sure that two things are not the same in both value and type** — it's the safe and preferred way.
+
+---
+Great question again, Aswin!
+
+You're using `.find()` here:
+
+```js
+const selectedProject = projectState.projects.find(
+  project => project.id === projectState.selectedProjectId
+);
+```
+
+---
+
+## 🔍 What is `.find()`?
+
+`.find()` is a JavaScript array method that:
+
+* **Searches** through an array
+* **Returns the first item** that matches a condition (true)
+* **Returns `undefined`** if nothing matches
+
+---
+
+### ✅ Syntax:
+
+```js
+array.find((item) => {
+  // return true if this is the item you want
+});
+```
+
+---
+
+### ✅ Your use case:
+
+You have an array of `projects`, and you're trying to find the one whose `id` matches the selected one:
+
+```js
+projectState.projects.find(project => project.id === projectState.selectedProjectId);
+```
+
+### 🧠 What it does:
+
+* Goes through each project in the array
+* Checks: `project.id === selectedProjectId`
+* Returns that project object if it matches
+* If no match is found → returns `undefined`
+
+---
+
+### ✅ Simple Example:
+
+```js
+const users = [
+  { id: 1, name: "Aswin" },
+  { id: 2, name: "Haris" },
+];
+
+const selectedUser = users.find(user => user.id === 2);
+console.log(selectedUser); // { id: 2, name: "Haris" }
+```
+
+---
+
+### ✅ Why and When to Use `.find()`?
+
+| Situation                         | Use `.find()` if...                     |
+| --------------------------------- | --------------------------------------- |
+| You need a **single item**        | like one project, one user, one product |
+| You want the **first match only** | not all matches                         |
+| You need the **object itself**    | not just the index                      |
+
+---
+
+### ⚠️ Difference from `.filter()`:
+
+| `.find()`                       | `.filter()`                         |
+| ------------------------------- | ----------------------------------- |
+| Returns **first match**         | Returns **all matches** as an array |
+| Returns **object or undefined** | Returns **array** always            |
+
+---
+
+### 💡 In Your App:
+
+You're using `.find()` to:
+
+> Get the one project the user selected in the sidebar, so you can display its details.
+
+---
+
+## 🔍 What is `.filter()`?
+
+`.filter()` is a JavaScript array method that:
+
+> **Returns a new array** with all items that match a condition (returns `true` in the test function).
+
+It does **not** change the original array.
+
+---
+
+### ✅ Syntax:
+
+```js
+array.filter((item) => {
+  return condition; // true to keep it, false to skip it
+});
+```
+
+---
+
+### ✅ Simple Example:
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+
+console.log(evenNumbers); // [2, 4]
+```
+
+---
+
+## ✅ Use case in your project:
+
+You used `.filter()` in this line:
+
+```js
+projects: prev.projects.filter(
+  (project) => project.id !== prev.selectedProjectId
+)
+```
+
+### 🔍 What this means:
+
+> "Create a new list of projects that **doesn't include** the one with the selected ID (the one we want to delete)."
+
+So it’s used to **delete a project** from the list by filtering out the one matching the selectedProjectId.
+
+---
+
+## ✅ Real-life Use Cases
+
+| Scenario                         | What `.filter()` does                |
+| -------------------------------- | ------------------------------------ |
+| Delete an item                   | Remove item that matches a condition |
+| Keep only completed tasks        | `task.completed === true`            |
+| Filter products by price range   | `product.price < 1000`               |
+| Filter students with high scores | `student.score >= 90`                |
+| Show only available items        | `item.inStock === true`              |
+
+---
+
+### ✅ Another Example (Delete by ID):
+
+```js
+const users = [
+  { id: 1, name: "Aswin" },
+  { id: 2, name: "Haris" },
+  { id: 3, name: "Sita" }
+];
+
+const newUsers = users.filter(user => user.id !== 2);
+
+console.log(newUsers);
+// [
+//   { id: 1, name: "Aswin" },
+//   { id: 3, name: "Sita" }
+// ]
+```
+
+---
+
+### ⚠️ `.filter()` vs `.find()`
+
+| Feature     | `.find()`                   | `.filter()`                       |
+| ----------- | --------------------------- | --------------------------------- |
+| Returns     | One item or `undefined`     | New array with matching items     |
+| Use when    | You want a **single match** | You want **multiple/all matches** |
+| Typical use | View details                | Delete, show filtered list        |
+
+---
+
