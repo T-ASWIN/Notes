@@ -1,4 +1,3 @@
-
 ---
 
 ## 🎨 **CSS – Cascading Style Sheets**
@@ -17,7 +16,7 @@ CSS is used to **style HTML** — like colors, spacing, sizes, layouts, fonts, e
 
 ---
 
-## 🎯 **CSS Selectors** (To apply styles)
+## 🌟 **CSS Selectors** (To apply styles)
 
 ### 1️⃣ **Tag Selector**
 
@@ -90,8 +89,6 @@ p {
 | `vh` | Viewport height     | `height: 100vh;` (100% of screen height) |
 | `%`  | Percentage          | `width: 80%;` (relative to parent)       |
 
----
-
 ### ✅ Common Rule:
 
 * `width` → use `%` (responsive)
@@ -99,7 +96,7 @@ p {
 
 ---
 
-## 📐 Media Queries (for responsiveness)
+## 📊 Media Queries (for responsiveness)
 
 ```css
 @media screen and (max-width: 600px) {
@@ -116,7 +113,7 @@ p {
 
 ---
 
-## 🧭 CSS Positioning
+## 🗭 CSS Positioning
 
 | Property           | What It Does                                          |
 | ------------------ | ----------------------------------------------------- |
@@ -157,7 +154,61 @@ body {
 
 ---
 
-## ✅ Summary Quick Table:
+## 📄 Layout Properties & Display
+
+| Property        | Use Case                              |
+| --------------- | ------------------------------------- |
+| `display: flex` | Align items horizontally / vertically |
+| `display: grid` | Create grid layouts                   |
+| `block`         | Default for div, takes full width     |
+| `inline`        | Sits next to other inline elements    |
+| `none`          | Hides the element completely          |
+
+**Flexbox alignment:**
+
+```css
+.parent {
+  display: flex;
+  justify-content: space-between; /* horizontal */
+  align-items: center;            /* vertical */
+}
+```
+
+---
+
+## 🚶 Box Model & Sizing
+
+### ✅ `box-sizing: border-box;`
+
+* Makes padding & border count **inside** the element's size.
+* Easier to manage spacing.
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+}
+```
+
+> ✅ Total width = 300px (not 300 + 20 + 5)
+
+---
+
+## 🔍 Text Styling & Decorations
+
+| Property          | Example                       |
+| ----------------- | ----------------------------- |
+| `font-weight`     | `font-weight: bold;`          |
+| `text-align`      | `text-align: center;`         |
+| `line-height`     | `line-height: 1.7;`           |
+| `text-decoration` | `text-decoration: underline;` |
+| `text-transform`  | `text-transform: uppercase;`  |
+
+---
+
+## ✨ Summary Quick Table:
 
 | Concept              | Shortcut / Tip                   |
 | -------------------- | -------------------------------- |
@@ -170,6 +221,7 @@ body {
 | `position: absolute` | Removes from normal flow         |
 | `background-repeat`  | Control image tiling             |
 | `attachment: fixed`  | Fix background while scrolling   |
+| `box-sizing`         | Include padding/border in width  |
+| `text-decoration`    | Underline, overline, none        |
 
 ---
-
