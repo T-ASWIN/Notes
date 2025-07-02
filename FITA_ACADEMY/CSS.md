@@ -225,3 +225,76 @@ div {
 | `text-decoration`    | Underline, overline, none        |
 
 ---
+
+### ✅ What is `grid-template-columns`?
+
+`grid-template-columns` is a **CSS property** used **with `display: grid`** to define **how many columns** your grid should have — and **how wide** each column should be.
+
+---
+
+### 💡 Basic Example:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 200px 100px;
+}
+```
+
+**What it means:**
+You are creating a grid with **2 columns**:
+
+* First column is **200px** wide
+* Second column is **100px** wide
+
+---
+
+### 🧠 Responsive Version:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+```
+
+* `fr` stands for **fraction** of available space.
+* So `1fr 1fr` splits the space **equally into 2 columns**.
+
+---
+
+### 🧱 You can create any number of columns:
+
+```css
+grid-template-columns: 100px 100px 100px;
+```
+
+➡️ This will create **3 columns**, each **100px** wide.
+
+Or use repeat:
+
+```css
+grid-template-columns: repeat(3, 100px);
+```
+
+➡️ Same as above — but shorter!
+
+---
+
+### 🔧 Use Cases:
+
+* 🖼️ Image galleries
+* 📦 Product cards
+* 📊 Dashboard layouts
+* 📁 File/folder view
+
+---
+
+### ✅ Summary:
+
+| Value            | What It Does                    |
+| ---------------- | ------------------------------- |
+| `100px 200px`    | Fixed widths for each column    |
+| `1fr 2fr`        | Flexible: ⅓ and ⅔ of space      |
+| `repeat(3, 1fr)` | 3 equal-width columns           |
+| `auto auto`      | Columns adjust to content width |
