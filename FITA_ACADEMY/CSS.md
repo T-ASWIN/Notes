@@ -207,6 +207,54 @@ div {
 | `text-transform`  | `text-transform: uppercase;`  |
 
 ---
+### ✅ What is `text-transform` in CSS?
+
+`text-transform` is a **CSS property** used to **change the case of text** — like making it **uppercase**, **lowercase**, or **capitalized**.
+
+---
+
+### 🧪 Example Values and What They Do:
+
+| Value        | What It Does                                | Example                       |
+| ------------ | ------------------------------------------- | ----------------------------- |
+| `uppercase`  | Converts **all letters to CAPITAL**         | `hello` → `HELLO`             |
+| `lowercase`  | Converts **all letters to small**           | `HELLO` → `hello`             |
+| `capitalize` | Makes **first letter of each word capital** | `hello world` → `Hello World` |
+| `none`       | **No change** to the text                   | `Hello` → `Hello`             |
+
+---
+
+### 💡 Simple Example:
+
+```css
+h1 {
+  text-transform: uppercase;
+}
+```
+
+This will make any `<h1>` text **completely uppercase**.
+
+---
+
+### ✅ Use Cases:
+
+| Use Case                        | Value to Use |
+| ------------------------------- | ------------ |
+| Navigation menus (ALL CAPS)     | `uppercase`  |
+| Terms & Conditions or footnotes | `lowercase`  |
+| Headlines or titles             | `capitalize` |
+
+---
+
+### 🔄 Combined with Tailwind CSS?
+
+```html
+<p class="uppercase">this will be UPPERCASE</p>
+<p class="lowercase">THIS WILL be lowercase</p>
+<p class="capitalize">this will be Capitalize</p>
+```
+
+---
 
 ## ✨ Summary Quick Table:
 
