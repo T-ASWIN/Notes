@@ -445,3 +445,63 @@ top: 0;
 | sticky   | ✅ Yes          | 👇 Switches      | Itself until sticky trigger |
 
 
+---
+
+### ✅ **Code:**
+
+```css
+@media screen and (max-width: 750px) {
+  /* CSS rules go here */
+}
+```
+
+---
+
+### ✅ **In Simple Terms:**
+
+* **`@media`** = "Only apply the CSS inside this block **in certain conditions**"
+* **`screen`** = Apply it when viewing on a **screen** (like a phone, tablet, laptop)
+* **`max-width: 750px`** = Apply when the screen size is **750 pixels wide or smaller**
+
+---
+
+### 🧠 Think of it like this:
+
+> "**If the screen is small (like a mobile or tablet), then use this CSS instead of the default styling.**"
+
+---
+
+### ✅ **Use Case Example:**
+
+Imagine a website has a wide navigation bar for desktop. But on phones, it looks messy.
+So, we use media query to:
+
+* **Hide desktop navbar**
+* **Show mobile menu icon** (hamburger menu)
+
+```css
+@media screen and (max-width: 750px) {
+  .desktop-navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: block;
+  }
+}
+```
+
+---
+
+### ✅ Common Use Cases:
+
+| Scenario                        | Why Use `@media screen and (max-width)`    |
+| ------------------------------- | ------------------------------------------ |
+| 💻 Desktop vs 📱 Mobile layouts | Adjust layout to fit small screens         |
+| 📷 Image scaling                | Resize or hide large images                |
+| 🧭 Navigation                   | Replace horizontal menu with hamburger     |
+| ✍️ Font resizing                | Make fonts more readable on phones         |
+| 🎨 Hide or stack columns        | Convert 2- or 3-column layouts to 1-column |
+
+---
+
