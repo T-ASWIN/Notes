@@ -363,3 +363,83 @@ To **prevent the form from refreshing the page** and losing your typed input.
 ---
 
 
+
+## ✅ What is `.startsWith()` in JavaScript?
+
+`.startsWith()` is a **string method** that checks if a string **begins with** a specific set of characters.
+
+```js
+"apple".startsWith("ap"); // true
+"apple".startsWith("pp"); // false
+```
+
+---
+
+## ✅ Syntax
+
+```js
+string.startsWith(searchString)
+```
+
+Returns:
+
+* `true` → if the string starts with `searchString`
+* `false` → otherwise
+
+---
+
+## 🧠 Simple Meaning:
+
+> “Does this word start with those letters?”
+
+---
+
+## 🧪 Example in Your Code
+
+```jsx
+{movies.map(
+  (movie) =>
+    movie.title.toLowerCase().startsWith(issearch) && (
+      <MovieCard movie={movie} key={movie.id} />
+    )
+)}
+```
+
+### 🔍 What's happening?
+
+* `movie.title.toLowerCase()` → Makes the title lowercase (like "John Wick" → "john wick")
+* `.startsWith(issearch)` → Checks if that title **starts with** the letters you typed
+* If `true`, it returns the `MovieCard`; if `false`, it returns `false` (nothing)
+
+---
+
+## 💬 Example:
+
+If you type `jo` in the search box:
+
+```js
+"john wick".startsWith("jo") // ✅ true
+"terminator".startsWith("jo") // ❌ false
+```
+
+✅ So only "john wick" and "john wick2" would be shown.
+
+---
+
+## 🔁 Summary:
+
+| Method             | Purpose                                          |
+| ------------------ | ------------------------------------------------ |
+| `.startsWith("x")` | Checks if a string **starts** with `"x"`         |
+| `.includes("x")`   | Checks if a string **contains** `"x"` (anywhere) |
+
+---
+
+## ✨ Bonus:
+
+If you want to search even if the word is in the **middle** (not just start), use:
+
+```js
+movie.title.toLowerCase().includes(issearch.toLowerCase())
+```
+
