@@ -180,3 +180,100 @@ function App() {
 | Nested object in props  | `config={{ theme: { dark: true }}}` | Structured settings            |
 | Inline object rendering | `{JSON.stringify({ a: 1 })}`        | Printing object in JSX         |
 
+
+```js
+const handleSearch = (event) => {
+  event.preventDefault();
+};
+```
+
+Instead of:
+
+```js
+function handleSearch(event) {
+  event.preventDefault();
+}
+```
+
+---
+
+### ✅ You **can** use a normal function inside a functional component
+
+Both work. But here's **why arrow functions are usually preferred** inside React components:
+
+---
+
+### 🔍 1. **Arrow functions preserve the `this` context**
+
+Although not critical inside functional components (because `this` isn’t used like in class components), arrow functions are still safer when:
+
+* Passing functions down as props
+* Binding callbacks inside event listeners
+
+For example, in **class components**, you'd need to bind regular functions:
+
+```js
+class App extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this); // required for normal function
+  }
+
+  handleClick() {
+    console.log(this); // needs binding
+  }
+}
+```
+
+But with arrow functions:
+
+```js
+handleClick = () => {
+  console.log(this); // always works correctly
+};
+```
+
+---
+
+### ✅ 2. **Arrow functions are more concise and cleaner**
+
+This is mostly **stylistic and modern practice**:
+
+```js
+// modern
+const handleChange = (e) => {};
+
+// older
+function handleChange(e) {}
+```
+
+---
+
+### ✅ 3. **Arrow functions avoid function hoisting confusion**
+
+Regular functions are hoisted (you can use them before they are defined), but arrow functions are not.
+
+So React developers prefer declaring functions using `const` before using them — **no confusion** about where the function is defined.
+
+---
+
+### ⚖️ Summary:
+
+| Use Arrow Function `(e) => {}`                            | Use Normal Function `function()`    |
+| --------------------------------------------------------- | ----------------------------------- |
+| ✅ Inside functional components                            | ✅ OK, but less common               |
+| ✅ For event handlers                                      | ✅ OK if you don’t use `this`        |
+| ✅ When you want a consistent `this` (in class components) | ❌ Needs binding in class components |
+| ✅ Modern & concise syntax                                 | ⚠️ Longer, old-style                |
+
+---
+
+💡 In your code:
+
+```js
+const handleSearch = (event) => {
+  event.preventDefault();
+};
+```
+
+
