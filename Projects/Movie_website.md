@@ -276,4 +276,90 @@ const handleSearch = (event) => {
 };
 ```
 
+---
+
+### ✅ **What is `preventDefault()`?**
+
+In JavaScript (especially in forms), some elements have **default behavior**.
+
+For example:
+
+* A **form** tries to **submit** and reload the page.
+* A **link (`<a>`)** navigates to a new page.
+* A **checkbox** toggles its check state.
+
+> `event.preventDefault()` **stops that default behavior** from happening.
+
+---
+
+### 🧠 **Simple Meaning:**
+
+> “Hey browser, don’t do what you normally do. I’ll handle it myself.”
+
+---
+
+### 🧪 Use Case 1: **Form Submission in React**
+
+```jsx
+function handleSubmit(event) {
+  event.preventDefault(); // 🚫 stop page reload
+  console.log("Form submitted!");
+}
+
+return (
+  <form onSubmit={handleSubmit}>
+    <button type="submit">Submit</button>
+  </form>
+);
+```
+
+✅ Without `preventDefault()`, the form will reload the page and you'll **lose all your React state**.
+
+---
+
+### 🧪 Use Case 2: **Stop a link from navigating**
+
+```jsx
+function handleClick(event) {
+  event.preventDefault(); // 🚫 stop navigating
+  console.log("Link was clicked, but not followed.");
+}
+
+return (
+  <a href="https://example.com" onClick={handleClick}>
+    Click me
+  </a>
+);
+```
+
+✅ Now the link won’t take you to `example.com`.
+
+---
+
+### 🔁 Summary Table:
+
+| Element       | Default Behavior       | `preventDefault()`                  |
+| ------------- | ---------------------- | ----------------------------------- |
+| `<form>`      | Submits & reloads page | Stops form submission               |
+| `<a href="">` | Goes to link           | Stops navigation                    |
+| `<checkbox>`  | Toggles value          | Stops checkbox behavior (rare case) |
+
+---
+
+### 💬 In Your Case (Search Form):
+
+```jsx
+<form onSubmit={handleSearch}>
+```
+
+You **must** use:
+
+```js
+event.preventDefault();
+```
+
+To **prevent the form from refreshing the page** and losing your typed input.
+
+---
+
 
