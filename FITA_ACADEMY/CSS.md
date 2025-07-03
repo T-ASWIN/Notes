@@ -346,3 +346,102 @@ grid-template-columns: repeat(3, 100px);
 | `1fr 2fr`        | Flexible: ⅓ and ⅔ of space      |
 | `repeat(3, 1fr)` | 3 equal-width columns           |
 | `auto auto`      | Columns adjust to content width |
+
+
+---
+
+### ✅ `1. static` (Default)
+
+**📌 What it means:**
+Every element is in the normal flow of the page. No special positioning.
+
+**🧠 Use case:**
+Default for most elements like `<p>`, `<div>`, etc., unless you want to move them.
+
+```css
+position: static;
+```
+
+**📋 Example:** A paragraph that appears in order with other elements.
+
+---
+
+### ✅ `2. relative`
+
+**📌 What it means:**
+Element stays in the normal flow, **but you can move it** using `top`, `left`, `right`, `bottom`.
+
+**🧠 Use case:**
+You want to shift an element slightly without breaking the layout.
+
+```css
+position: relative;
+top: 10px; left: 20px;
+```
+
+**📋 Example:** Nudging a button or icon without affecting nearby items.
+
+---
+
+### ✅ `3. absolute`
+
+**📌 What it means:**
+**Removed from normal flow**. Positioned **relative to the nearest positioned (non-static) ancestor**, or `body` if none.
+
+**🧠 Use case:**
+Placing tooltips, popups, dropdowns, badges, or elements exactly where you want.
+
+```css
+position: absolute;
+top: 10px; left: 20px;
+```
+
+**📋 Example:** A dropdown menu under a button.
+
+---
+
+### ✅ `4. fixed`
+
+**📌 What it means:**
+Fixed **to the browser window**. Doesn't move when scrolling.
+
+**🧠 Use case:**
+Sticky headers, floating buttons, or back-to-top arrows.
+
+```css
+position: fixed;
+bottom: 20px; right: 20px;
+```
+
+**📋 Example:** A chat button that stays at the bottom-right corner always.
+
+---
+
+### ✅ `5. sticky`
+
+**📌 What it means:**
+**Behaves like `relative`**, but becomes `fixed` when you scroll past a point.
+
+**🧠 Use case:**
+Sticky headers or section titles that stick while scrolling.
+
+```css
+position: sticky;
+top: 0;
+```
+
+**📋 Example:** A navbar that stays at the top **only while scrolling** past it.
+
+---
+
+### 🔁 Summary Table
+
+| Value    | Stays in flow? | Moves on scroll? | Positioned relative to      |
+| -------- | -------------- | ---------------- | --------------------------- |
+| static   | ✅ Yes          | ✅ Yes            | Normal flow                 |
+| relative | ✅ Yes          | ✅ Yes            | Itself                      |
+| absolute | ❌ No           | ✅ Yes            | Nearest positioned parent   |
+| fixed    | ❌ No           | ❌ No             | Viewport (browser window)   |
+| sticky   | ✅ Yes          | 👇 Switches      | Itself until sticky trigger |
+
+
