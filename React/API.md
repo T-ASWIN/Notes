@@ -94,3 +94,83 @@ export const searchMovies = async (query) => {
 
 ---
 
+## ✅ What is `await`?
+
+### 🧠 Simple Meaning:
+
+> `await` means **“wait here until I get the result.”**
+
+You use it when doing something **slow** — like:
+
+* Fetching data from the internet (API call)
+* Reading a file
+* Waiting for a timer
+
+---
+
+### 👀 Example (Real Life):
+
+```js
+const response = await fetch("https://api.example.com/movies");
+```
+
+💬 This means:
+
+> "Go get the movies from the website.
+> While you're doing that, wait here — don't run the next line yet."
+
+---
+
+### ⏱ Why Use `await`?
+
+Without `await`, the code moves on **before** the data is ready — and causes bugs.
+
+---
+
+## 🧪 Without `await` (wrong):
+
+```js
+const response = fetch("https://..."); // doesn't wait
+const data = response.json(); // ❌ error! response not ready yet
+```
+
+---
+
+## ✅ With `await` (correct):
+
+```js
+const response = await fetch("https://...");
+const data = await response.json(); // waits until it's ready
+```
+
+---
+
+### 🔁 Only Works Inside `async` Functions
+
+That’s why you see:
+
+```js
+export const getPopularMovies = async () => {
+  const response = await fetch(...);
+  const data = await response.json();
+  return data.results;
+};
+```
+
+Because:
+
+* `async` allows you to use `await`
+* `await` makes sure you get the data **before moving forward**
+
+---
+
+## 🧭 Summary
+
+| Keyword | Meaning                                          |
+| ------- | ------------------------------------------------ |
+| `async` | Says "this function has something slow inside"   |
+| `await` | Says "wait here for the result before moving on" |
+
+---
+
+
