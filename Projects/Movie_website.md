@@ -541,4 +541,89 @@ If you returned just the array (`return updatedItems`), you'd break your expecte
 
 ---
 
+```js
+if (updatedItem.quantity <= 0) {
+  updatedItems.splice(updatedItemIndex, 1);
+} else {
+  updatedItems[updatedItemIndex] = updatedItem;
+}
+```
+
+---
+
+### ✅ What this block does
+
+This code is part of your **cart quantity update** logic. It decides **what to do with an item after its quantity has been changed**:
+
+---
+
+### 💬 Step-by-step Explanation
+
+#### 🔹 1. `if (updatedItem.quantity <= 0)`
+
+* If the quantity becomes 0 (or less, just in case), it means:
+
+  * The user **removed** the item
+  * So we **remove it completely** from the cart
+
+```js
+updatedItems.splice(updatedItemIndex, 1);
+```
+
+* `splice(index, 1)` removes **1 item at that index** from the array.
+
+---
+
+#### 🔹 2. `else { updatedItems[updatedItemIndex] = updatedItem; }`
+
+* If the new quantity is still **positive**, we keep the item
+* We **replace the original item** with the updated one in the array
+
+---
+
+### 🔁 Real-Life Example
+
+Say the cart has this:
+
+```js
+items: [
+  { id: 'p1', name: 'T-shirt', quantity: 2 },
+  { id: 'p2', name: 'Jeans', quantity: 1 }
+]
+```
+
+Now you call:
+
+```js
+handleUpdateCartItemQuantity('p2', -1); // subtract 1 from quantity
+```
+
+That will result in:
+
+```js
+updatedItem.quantity = 0
+```
+
+So the condition becomes true:
+
+```js
+if (0 <= 0)
+```
+
+And it will `splice` (remove) Jeans from the cart.
+
+---
+
+### ✅ Summary
+
+| Code                                | Meaning                                       |
+| ----------------------------------- | --------------------------------------------- |
+| `if (updatedItem.quantity <= 0)`    | If quantity drops to 0 or below               |
+| `splice(index, 1)`                  | Remove that item from the cart                |
+| `else`                              | If still > 0, just update the item’s quantity |
+| `updatedItems[index] = updatedItem` | Replaces the old version of the item          |
+
+---
+
+
 
