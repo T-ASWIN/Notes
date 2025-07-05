@@ -443,3 +443,102 @@ If you want to search even if the word is in the **middle** (not just start), us
 movie.title.toLowerCase().includes(issearch.toLowerCase())
 ```
 
+---
+
+### 👇 The line you're asking about:
+
+```js
+return {
+  items: updatedItems,
+};
+```
+
+---
+
+### ✅ What is this doing?
+
+You're using this inside:
+
+```js
+setShoppingCart((prevShoppingCart) => {
+  // logic...
+
+  return {
+    items: updatedItems, // 👈 this is the new state
+  };
+});
+```
+
+This **returns the new state** object for `shoppingCart`.
+
+---
+
+### 🧠 Why it's needed
+
+React’s `setState()` (like `setShoppingCart`) takes either:
+
+1. A new state object, or
+2. A function that returns a new state object.
+
+In your case, you're using a **function form** of `setState()`:
+
+```js
+setShoppingCart((prevState) => {
+  // modify cart
+  return newState; // 🔁 required!
+});
+```
+
+This means React will:
+
+* Call your function with the **current state** (`prevShoppingCart`)
+* Expect you to **return the updated state** object
+* Then React **replaces** the old state with what you return
+
+---
+
+### 🛠 What happens without it?
+
+If you don't return anything:
+
+```js
+setShoppingCart((prev) => {
+  // no return ❌
+});
+```
+
+React sets the state to `undefined`, and your app will likely crash or misbehave.
+
+---
+
+### 💡 Why an object with `items`?
+
+You're managing state like:
+
+```js
+const [shoppingCart, setShoppingCart] = useState({ items: [] });
+```
+
+So you must **return an object** like:
+
+```js
+{
+  items: [...newArray]
+}
+```
+
+If you returned just the array (`return updatedItems`), you'd break your expected structure.
+
+---
+
+### ✅ Summary
+
+| Code                                        | Why it's needed                                                               |
+| ------------------------------------------- | ----------------------------------------------------------------------------- |
+| `return { items: updatedItems }`            | You must return the **new shoppingCart object** to update React state         |
+| Inside `setShoppingCart((prev) => { ... })` | You're using the functional form to access and update based on previous state |
+| Returning `undefined`                       | Causes broken state or errors                                                 |
+
+---
+
+
