@@ -505,3 +505,243 @@ So, we use media query to:
 
 ---
 
+### 🔁 1. **transform + transition**
+
+```css
+box {
+  transform: translateX(100%);
+  transition: transform 1s;
+}
+```
+
+* `transform: translateX(100%)`: Moves the element 100% to the right (based on its width).
+* `transition: transform 1s`: When the transform value changes, it smoothly moves over 1 second.
+
+👉 **Use this when the movement is triggered by something**, like a hover or class change.
+
+---
+
+### 🎬 2. **@keyframes animation (from → to)**
+
+```css
+@keyframes slideDown {
+  from {
+    transform: translateY(-300%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+box {
+  animation: slideDown 1s;
+}
+```
+
+* This automatically moves the element **from `translateY(-300%)` (off screen above)**
+  **to `translateY(0%)` (its original place)**.
+* It runs once over 1 second.
+
+👉 **Use this when you want the animation to start automatically**, like when the page loads.
+
+---
+
+### ✅ Quick analogy:
+
+Think of `transform` as *where to move*,
+`transition` as *how smoothly to move*,
+and `@keyframes` as *a custom animation path with start (from) and end (to)*.
+
+---
+
+### ✅ 1. `.box` Animation (`@keyframes box`)
+
+```css
+animation-name: box;
+animation-duration: 10s;
+```
+
+* You’ve defined steps at `24%`, `25%`, `50%`, and `75%`.
+* Animates **position**, **rotation**, **size**, and **shape**:
+
+  * Moves right (via `padding-left`)
+  * Rotates 90 degrees
+  * Changes width to 15%
+  * Turns into a circle using `border-radius: 50%`
+
+---
+
+### ✅ 2. `.boll .inner` Animation (`@keyframes planet`)
+
+```css
+animation-name: planet;
+animation-duration: 8s;
+```
+
+* Rotates the planet image inside the outer red circle:
+
+  * Rotates 360° halfway
+  * Snaps back to 0° at 51%
+  * Then rotates 360° again by end
+
+🌀 **Effect:** Makes it look like the planet is spinning.
+
+---
+
+### ✅ 3. `.ballcolor` Animation (`@keyframes rotate`)
+
+```css
+animation-name: rotate;
+animation-duration: 8s;
+```
+
+* Rotates the whole border (outer ring) on the Y-axis halfway:
+
+  * `rotateY(360deg)` makes it flip horizontally.
+
+🌀 **Effect:** Creates a 3D spinning illusion of the circle.
+
+---
+
+### ✅ 4. `.slide` Animation (`@keyframes slideright`)
+
+```css
+animation-name: slideright;
+animation-duration: 4s;
+```
+
+```css
+from {
+  transform: translateX(900%);
+}
+to {
+  transform: translateY(0%);
+}
+```
+
+* Starts off-screen to the right (900% to the right)
+* Then slides into its original position
+
+🟪 **Effect:** Slide-in effect from right to center.
+
+---
+
+### ✅ 5. `.rotate` Animation (`@keyframes rotate`)
+
+```css
+transform: rotateX(360deg);
+```
+
+* Rotates the element around the X-axis halfway (like flipping forward)
+* Affects just the inner content
+
+🌀 **Effect:** A 3D vertical spin (like flipping a coin forward).
+
+---
+
+### ✅ 6. `.glow` Animation (`@keyframes glow`)
+
+```css
+transform: scale(0.5, 0.5);
+```
+
+* Shrinks the element to half size at 50%
+* No `from` or `to`, so it bounces back automatically
+
+✨ **Effect:** A glowing/pulsing shrink animation.
+
+---
+
+### ✅ 7. `.fade` Animation (`@keyframes fade`)
+
+```css
+opacity: 0;
+```
+
+* Makes the element invisible (opacity 0) at 50%
+* Will return to full visibility by default
+
+🌫️ **Effect:** Quick blink/fade-out-and-in effect.
+
+---
+
+### ✅ 8. `.box_glow` Animation (`@keyframes box_glow`)
+
+```css
+box-shadow: 0px 0px 50px black;
+```
+
+* Adds a glowing shadow at 50%
+* `animation-iteration-count: infinite;` means it repeats forever
+
+🌟 **Effect:** Constant glowing or blinking box
+
+---
+
+
+## 🧠 What Is `animation-timing-function`?
+
+It controls **how the speed of an animation changes over time** — whether it moves steadily, starts slow and gets fast, or bounces.
+
+### Imagine a car 🚗 going from point A to B:
+
+* Does it move at the **same speed**?
+* Does it **start slow**, then **go fast**?
+* Does it **slow down** before stopping?
+
+That's what `animation-timing-function` does!
+
+---
+
+## 🎯 Common Values (with Examples):
+
+| Value          | Meaning                                                           | Animation Style              |
+| -------------- | ----------------------------------------------------------------- | ---------------------------- |
+| `linear`       | Moves at a constant speed (like a train 🚄)                       | Even motion, no acceleration |
+| `ease`         | Starts slow → speeds up → ends slow (default)                     | Smooth and natural           |
+| `ease-in`      | Starts slow, then speeds up (like taking off ✈️)                  | Accelerates at the beginning |
+| `ease-out`     | Starts fast, then slows down (like braking 🚗)                    | Decelerates at the end       |
+| `ease-in-out`  | Slow at start & end, fast in the middle (like a rollercoaster 🎢) | Natural start and stop       |
+| `cubic-bezier` | Custom curve for advanced timing (control exactly how it moves)   | Advanced control             |
+| `steps(n)`     | Jumps in `n` steps (used in sprite animations or counters)        | Jerky, step-by-step effect   |
+
+---
+
+## 🔧 Example:
+
+```css
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(500px);
+  }
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: red;
+  animation: slide 2s ease-in-out;
+}
+```
+
+🟢 `ease-in-out` makes it:
+
+* Start slow,
+* Speed up in the middle,
+* Slow down at the end.
+
+---
+
+## 🔍 Visual Analogy:
+
+* `linear` → ———— (same speed)
+* `ease-in` → \_\_/—— (slow start)
+* `ease-out` → ——\_\_ (slow end)
+* `ease-in-out` → \_*/——\_* (slow → fast → slow)
+
+---
+
+
