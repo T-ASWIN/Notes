@@ -72,4 +72,60 @@ Because `MyComponent` is **not wrapped** in `<MyContext.Provider>`, it uses the 
 
 > The default value is only used when no `<Provider>` is wrapping the component trying to read the context.
 
+
 ---
+
+## ✅ **10) Standard = useContext, Alternative = `<CartContext.Consumer>`**
+
+### 🔁 What's the difference?
+
+1. **Standard (modern)**:
+
+```js
+const cart = useContext(CartContext);
+```
+
+2. **Alternative (older)**:
+
+```jsx
+<CartContext.Consumer>
+  {(cart) => <h1>{cart}</h1>}
+</CartContext.Consumer>
+```
+
+---
+
+### ⚠️ Why use `<Consumer>`?
+
+* Useful in **class components** (because `useContext()` only works in **function components**).
+* Sometimes used when you want **more control or nesting multiple contexts**.
+
+---
+
+### ✅ Full Example:
+
+```jsx
+<CartContext.Consumer>
+  {(cart) => (
+    <div>
+      <h2>Items in Cart: {cart.length}</h2>
+      {/* You can pass `cart` to other child components here */}
+    </div>
+  )}
+</CartContext.Consumer>
+```
+
+---
+
+## ✅ Summary Table:
+
+| Feature                      | `useContext`                 | `<Context.Consumer>`                 |
+| ---------------------------- | ---------------------------- | ------------------------------------ |
+| Syntax                       | `const value = useContext()` | Function as a child (`render props`) |
+| Works in Function Components | ✅                            | ✅                                    |
+| Works in Class Components    | ❌                            | ✅                                    |
+| Recommended                  | ✅ (modern standard)          | ⛔ (legacy/when needed)               |
+
+---
+
+
