@@ -226,4 +226,211 @@ This makes it:
 
 ---
 
+### 🔶 1. `ThemeContextProvider.jsx`
+
+This file **creates** and **provides** the context.
+
+```jsx
+export const ThemeContext = React.createContext({
+  theme: 'light',
+  toggleTheme: () => {},
+});
+```
+
+* You create a `ThemeContext` with default values.
+* You then define `ThemeContextProvider`, which:
+
+  * Keeps the current theme (`light` or `dark`) in state.
+  * Provides `theme` and `toggleTheme` function through Context.
+
+```jsx
+<ThemeContext.Provider value={{ theme, toggleTheme }}>
+  {children}
+</ThemeContext.Provider>
+```
+
+Now, **any component inside `<ThemeContextProvider>`** can access the `theme` and `toggleTheme()`.
+
+---
+
+### 🔶 2. `App.jsx`
+
+```jsx
+<ThemeContextProvider>
+  <Page />
+</ThemeContextProvider>
+```
+
+* Wraps your entire app in the provider.
+* Allows all nested components (like `Page`, `Header`) to access theme context.
+
+---
+
+### 🔶 3. `Page.jsx`
+
+```jsx
+const themeCtx = React.useContext(ThemeContext);
+```
+
+* Uses the current theme and applies it to a `div` as a CSS class:
+
+  ```jsx
+  <div className={themeCtx.theme}>
+  ```
+* Shows the rest of your content inside this themed container.
+
+---
+
+### 🔶 4. `Header.jsx`
+
+Also uses:
+
+```js
+const themeCtx = React.useContext(ThemeContext);
+```
+
+* Displays a button:
+
+  ```jsx
+  <button onClick={themeCtx.toggleTheme}>Toggle Theme</button>
+  ```
+* Clicking this switches between **light** and **dark** themes.
+
+---
+
+### 🧠 Summary Diagram:
+
+```
+App.jsx
+└── ThemeContextProvider
+     └── Page.jsx
+         ├── Header.jsx (uses theme & toggleTheme)
+         └── article (uses theme for styling)
+```
+
+---
+
+## ✅ **PART 2: Another Similar Example – Language Switcher**
+
+Let’s now build a similar example, but for **switching languages** instead of themes.
+
+---
+
+### 🗂️ `LanguageContextProvider.jsx`
+
+```jsx
+import React from 'react';
+
+export const LanguageContext = React.createContext({
+  language: 'en',
+  switchLanguage: () => {},
+});
+
+export default function LanguageContextProvider({ children }) {
+  const [language, setLanguage] = React.useState('en');
+
+  const switchLanguage = () => {
+    setLanguage((prevLang) => (prevLang === 'en' ? 'es' : 'en')); // en <-> es
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, switchLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+```
+
+---
+
+### 🗂️ `App.jsx`
+
+```jsx
+import React from 'react';
+import LanguageContextProvider from './LanguageContextProvider';
+import Page from './Page';
+
+function App() {
+  return (
+    <LanguageContextProvider>
+      <Page />
+    </LanguageContextProvider>
+  );
+}
+
+export default App;
+```
+
+---
+
+### 🗂️ `Page.jsx`
+
+```jsx
+import React from 'react';
+import { LanguageContext } from './LanguageContextProvider';
+import Header from './Header';
+
+const translations = {
+  en: {
+    title: 'Welcome to our website!',
+    description: 'This is a multi-language app.',
+  },
+  es: {
+    title: '¡Bienvenido a nuestro sitio web!',
+    description: 'Esta es una aplicación multilingüe.',
+  },
+};
+
+export default function Page() {
+  const { language } = React.useContext(LanguageContext);
+  const content = translations[language];
+
+  return (
+    <div>
+      <Header />
+      <h2>{content.title}</h2>
+      <p>{content.description}</p>
+    </div>
+  );
+}
+```
+
+---
+
+### 🗂️ `Header.jsx`
+
+```jsx
+import React from 'react';
+import { LanguageContext } from './LanguageContextProvider';
+
+export default function Header() {
+  const { language, switchLanguage } = React.useContext(LanguageContext);
+
+  return (
+    <header>
+      <h1>Multi-Language App</h1>
+      <p>Current Language: {language}</p>
+      <button onClick={switchLanguage}>
+        Switch to {language === 'en' ? 'Spanish' : 'English'}
+      </button>
+    </header>
+  );
+}
+```
+
+---
+
+## ✅ Summary: Theme Example vs Language Example
+
+| Feature      | Theme App              | Language App         |
+| ------------ | ---------------------- | -------------------- |
+| Context Name | `ThemeContext`         | `LanguageContext`    |
+| State        | `theme` (`light/dark`) | `language` (`en/es`) |
+| Function     | `toggleTheme()`        | `switchLanguage()`   |
+| Used In      | `Header`, `Page`       | `Header`, `Page`     |
+| Behavior     | Toggle page styles     | Switch language text |
+
+---
+
+
 
