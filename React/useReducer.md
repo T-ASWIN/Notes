@@ -241,6 +241,57 @@ Awesome! Here's a simple and clear **cheat sheet + flowchart** to help you decid
 | Contact form (2–3 fields)     | `useState`       |
 | Complex form with validations | `useReducer`     |
 
+
+---
+
+## 🔁 1. `switch` statement – **Most common** ✅
+
+It's cleaner when you have many different actions:
+
+```js
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    case 'RESET':
+      return { count: 0 };
+    default:
+      return state;
+  }
+}
+```
+
+---
+
+## ✅ 2. `if` statements – also valid
+
+You can use `if` if there are only 2–3 conditions:
+
+```js
+function reducer(state, action) {
+  if (action.type === 'INCREMENT') {
+    return { count: state.count + 1 };
+  }
+
+  if (action.type === 'DECREMENT') {
+    return { count: state.count - 1 };
+  }
+
+  return state;
+}
+```
+
+---
+
+## 🧠 Which one to use?
+
+| Use this | When                                   |
+| -------- | -------------------------------------- |
+| `switch` | ✅ Multiple actions (cleaner, standard) |
+| `if`     | ✅ Few actions (shorter logic)          |
+
 ---
 
 
