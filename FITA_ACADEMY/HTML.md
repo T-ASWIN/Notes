@@ -759,3 +759,75 @@ The `<aside>` tag is used to show **extra content** that is **related but not es
 | Open/Close Tag   | Opening + closing needed | `<p>Text</p>`         |
 
 ---
+
+We use **`flex-direction: column`** in **Flexbox** to tell the browser:
+
+> “Stack the child elements **vertically** (top to bottom) instead of horizontally (left to right).”
+
+---
+
+### 🔍 Default behavior:
+
+```css
+display: flex;
+```
+
+By default, this means:
+
+* `flex-direction: row` (horizontal).
+* Elements are placed **side-by-side** in a row.
+
+---
+
+### 🧱 Example:
+
+#### ❌ Horizontal (default):
+
+```css
+.parent {
+  display: flex;         /* Default is row */
+}
+```
+
+```html
+<div class="parent">
+  <div>Image</div>
+  <div>Text</div>
+</div>
+```
+
+On mobile, this may cause the layout to break because:
+
+* Image + Text are too wide together.
+* A scrollbar appears.
+
+---
+
+### ✅ Vertical with `flex-direction: column`:
+
+```css
+@media (max-width: 450px) {
+  .parent {
+    flex-direction: column;
+  }
+}
+```
+
+Now:
+
+* `Image` comes first (on top),
+* Then `Text` below it.
+
+It stacks **neatly** for small screens.
+
+---
+
+### 📱 Why it matters for mobile:
+
+Using `flex-direction: column` helps:
+
+* Avoid horizontal scrollbars.
+* Make your layout **more readable**.
+* Keep UI **mobile-friendly**.
+
+---
