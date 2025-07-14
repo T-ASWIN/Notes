@@ -201,3 +201,78 @@ if (someCondition) {
 
 ---
 
+## 🔸 **23) When we pass a function as a dependency in `useEffect`, it causes problems**
+
+✅ This is **true**, and here’s **why**:
+
+### 🔹 Functions are objects in JavaScript
+
+Every time your component **re-renders**, a function defined inside it (like `handleClick` or `fetchData`) is **created again** — a **new object in memory**.
+
+So this:
+
+```js
+function hello1() {
+  console.log("hello");
+}
+
+function hello2() {
+  console.log("hello");
+}
+
+console.log(hello1 === hello2); // ❌ false
+```
+
+Even though the code is **exactly the same**, JavaScript treats each function as a **different object** in memory.
+This is what you're saying in **point 24** — and you're 100% correct.
+
+---
+
+## 🔁 So What Happens in `useEffect`?
+
+### 👇 Example:
+
+```js
+function App() {
+  function fetchData() {
+    // fetch something...
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]); // ⚠️ Problem!
+}
+```
+
+This causes the `useEffect` to run on **every render**, because:
+
+* `fetchData` is a **new function** each time,
+* so `[fetchData]` is always considered **changed**.
+
+---
+
+## ✅ How to Fix It?
+
+### Use `useCallback()` to **memoize** the function:
+
+```js
+const fetchData = useCallback(() => {
+  // fetch something...
+}, []);
+```
+
+Now React **remembers the same function**, and won’t think it’s “new” every time — avoiding unnecessary re-runs of `useEffect`.
+
+---
+
+## ✅ Summary
+
+| Concept                 | Explanation                                          |
+| ----------------------- | ---------------------------------------------------- |
+| `function === function` | Always false unless it's the **same exact instance** |
+| `useEffect([function])` | Causes reruns unless you use `useCallback`           |
+| Fix                     | Use `useCallback()` to memoize the function          |
+| Why this matters        | Prevents unnecessary re-renders or infinite loops    |
+
+---
+
