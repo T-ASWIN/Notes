@@ -276,3 +276,217 @@ Now React **remembers the same function**, and won’t think it’s “new” ev
 
 ---
 
+
+## ✅ 25) `useCallback` — Why and How We Use It
+
+### 🔹 Your point:
+
+> "We use this to wrap it around the function. It is similar to useEffect but it stores the function in memory..."
+
+Yes! That's mostly right. Let's refine it a little.
+
+---
+
+### 🔧 What is `useCallback`?
+
+> `useCallback` is a React Hook that **remembers (memoizes)** a function so that it **doesn’t get re-created** every time the component re-renders.
+
+### 🧠 Why use it?
+
+To prevent **unnecessary re-renders** or **infinite loops** when:
+
+* Passing a function to `useEffect`
+* Passing a function as a prop to child components (to avoid child re-rendering)
+
+---
+
+### ✅ Syntax:
+
+```js
+const memoizedFunction = useCallback(() => {
+  // function code
+}, [dependencies]);
+```
+
+---
+
+### 🔁 Difference from `useEffect`
+
+| Hook          | Purpose                                                  |
+| ------------- | -------------------------------------------------------- |
+| `useEffect`   | Runs code **after render**                               |
+| `useCallback` | **Stores a function** to avoid recreating it each render |
+
+---
+
+### 🧪 Example:
+
+```js
+const handleClick = useCallback(() => {
+  console.log("Clicked!");
+}, []);
+```
+
+Now `handleClick` stays the **same** between renders (same memory reference).
+
+---
+
+## ✅ 26) Dependency Array — What and Why
+
+### 🔹 Your point:
+
+> "Dependency we need to provide props or state for that"
+
+✅ Exactly! Let me explain it a bit more:
+
+---
+
+### 🧾 What is the Dependency Array?
+
+The array in:
+
+```js
+useEffect(() => {
+  // effect code
+}, [dependency1, dependency2]);
+```
+
+Or in:
+
+```js
+useCallback(() => {
+  // function code
+}, [dependency1]);
+```
+
+It tells React:
+
+> "Only re-run this function or effect when **these values change**."
+
+---
+
+### 🔥 If you don’t include the right dependencies:
+
+* You may get **stale data**
+* You might miss updates
+* Or you might have **infinite loops**
+
+---
+
+### ✅ Good examples of dependencies:
+
+* `state` variables
+* `props` passed from parent
+* values used **inside the function**
+
+---
+
+## 🧠 Final Summary
+
+| Concept                 | What it Means                                               |
+| ----------------------- | ----------------------------------------------------------- |
+| `useCallback`           | Remembers a function so it's **not recreated** every render |
+| `useEffect`             | Runs side effects **after render**                          |
+| Dependency Array (`[]`) | Tells React **when to run** the hook again                  |
+| Include in deps         | Any state or props used inside the function/effect          |
+
+---
+
+## ✅ Scenario:
+
+We have:
+
+* A **parent** component with a button and a count
+* A **child** component that receives a function as a prop
+
+We'll show:
+
+1. What happens **without** `useCallback`
+2. How `useCallback` **fixes** unnecessary re-rendering
+
+---
+
+## 🔧 Code Example
+
+### 🔹 1. Child Component (`Child.jsx`)
+
+```jsx
+import React from 'react';
+
+function Child({ onClick }) {
+  console.log("Child rendered 👶");
+
+  return (
+    <div>
+      <h3>Child Component</h3>
+      <button onClick={onClick}>Click Me</button>
+    </div>
+  );
+}
+
+export default React.memo(Child);
+```
+
+> 🔹 `React.memo` is used to **prevent re-rendering unless props change**.
+
+---
+
+### 🔹 2. Parent Component (`App.jsx`)
+
+```jsx
+import React, { useState, useCallback } from 'react';
+import Child from './Child';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  // ❌ Without useCallback — new function every time
+  // const handleClick = () => {
+  //   console.log("Button clicked!");
+  // };
+
+  // ✅ With useCallback — function is remembered
+  const handleClick = useCallback(() => {
+    console.log("Button clicked!");
+  }, []);
+
+  return (
+    <div>
+      <h2>Parent Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+
+      <Child onClick={handleClick} />
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+## 🔍 What Happens:
+
+### ✅ With `useCallback`:
+
+* `handleClick` doesn't change on re-render
+* ✅ Child component **doesn't re-render** when parent updates `count`
+
+### ❌ Without `useCallback`:
+
+* `handleClick` is a new function on every render
+* ❌ Child **re-renders unnecessarily** every time parent changes
+
+---
+
+## 🧠 Why This Matters:
+
+In big apps, re-rendering child components when not needed can **slow things down**.
+So `useCallback` helps **optimize performance** when:
+
+* You pass functions to child components
+* Child uses `React.memo` to avoid re-rendering
+
+---
+
+
