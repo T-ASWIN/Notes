@@ -307,3 +307,64 @@ That’s the React way:
 
 ---
 
+## 🔑 1. What is `key` in React (and why it's important)
+
+### ✅ Purpose of `key`
+
+* `key` is a **special prop** used by React **only in list rendering** (like inside `.map()`).
+* It helps React **identify** which items changed, added, or removed.
+
+### ❌ Without `key`:
+
+* React guesses which DOM nodes to reuse → sometimes **replaces or destroys previous data**.
+* **You see input boxes resetting**, animations breaking, etc.
+
+### ✅ With `key`:
+
+* React can **track each item correctly**.
+* It improves performance and prevents bugs.
+
+---
+
+### 🧠 Example:
+
+```jsx
+const users = ["Aswin", "Ravi", "Meena"];
+
+return (
+  <ul>
+    {users.map((name, index) => (
+      <li key={index}>{name}</li> // ✅ `key` used here
+    ))}
+  </ul>
+);
+```
+
+> ⚠️ Warning: `index` as key is okay for static lists, but not ideal if list items change position or get deleted.
+
+---
+
+## 💡 Rule:
+
+> **Always add `key` to elements inside `.map()` when rendering lists.**
+
+---
+
+## 🧠 Why `key` helps React?
+
+Imagine this:
+
+```jsx
+[ "A", "B", "C" ]
+```
+
+Becomes:
+
+```jsx
+[ "B", "C" ]
+```
+
+Without `key`, React can't tell what was removed — it might delete and re-render everything.
+With `key`, React sees `"A"` is gone, and just updates that part. Much more efficient and **preserves state** (like user inputs).
+
+---
