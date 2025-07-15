@@ -134,3 +134,19 @@ name.sort((a, b) => b - a); // Descending
 
 ---
 
+
+## 🔢 1. `Math.random()`
+
+### ✅ What it does:
+
+* Returns a **random number between 0 and 1** (not including 1).
+* It's used when you want randomness — like rolling a dice, shuffling, etc.
+
+### 🧪 Example:
+
+```js
+console.log(Math.random()); // Might print: 0.372, or 0.911, etc.
+```
+
+---
+
