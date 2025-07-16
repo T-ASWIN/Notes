@@ -831,3 +831,76 @@ Using `flex-direction: column` helps:
 * Keep UI **mobile-friendly**.
 
 ---
+
+### 🔹 `flex-wrap: wrap;` in CSS — Explained Clearly
+
+By default, a flex container (using `display: flex`) tries to put **all flex items on a single line**, **even if it overflows**. That’s why you sometimes get unwanted horizontal scrolling or layout breaking.
+
+### ✅ What `flex-wrap: wrap;` does:
+
+It allows **flex items to wrap onto multiple lines** instead of sticking to just one.
+
+---
+
+### 🔧 Syntax:
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+---
+
+### 📊 Visual Example:
+
+#### Without `flex-wrap: wrap;`
+
+```css
+display: flex;
+flex-wrap: nowrap; /* default */
+```
+
+All boxes are forced into a single row:
+
+```
+[Box1][Box2][Box3][Box4][Box5]⟶ (overflows the screen)
+```
+
+#### With `flex-wrap: wrap;`
+
+```css
+display: flex;
+flex-wrap: wrap;
+```
+
+Boxes automatically move to the next row if needed:
+
+```
+[Box1][Box2][Box3]
+[Box4][Box5]
+```
+
+---
+
+### 🧠 When to Use:
+
+* When you have **many items** (like product cards, images, or buttons) and want them to **flow neatly into rows**.
+* For **responsive design** to adapt to smaller screens.
+
+---
+
+### 📦 Combine it with:
+
+You often combine it with:
+
+```css
+justify-content: center;
+align-items: start;
+```
+
+To control alignment of wrapped rows.
+
+---
+
