@@ -420,3 +420,226 @@ React.createElement("progress", { max: timeout, value: remainingTime });
 * In JSX, it’s passed as a **prop** to the DOM element.
 
 ---
+
+When you use **nested `setTimeout()`**, the **second `setTimeout()` runs only after the first one completes** and its callback executes.
+
+---
+
+### 🔄 Let’s break down your code:
+
+```js
+setTimeout(() => {
+  // This part runs after 1 second (1000ms)
+  if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
+    setAnswerState("correct");
+  } else {
+    setAnswerState("Wrong");
+  }
+
+  // Now we start another timer inside the first one
+  setTimeout(() => {
+    setAnswerState("");
+  }, 2000); // This one runs 2 seconds after the first one runs
+}, 1000);
+```
+
+---
+
+### ⏱ Total timeline:
+
+| Time (ms) | What happens                                             |
+| --------- | -------------------------------------------------------- |
+| 0ms       | User clicks an answer                                    |
+| 1000ms    | First `setTimeout` triggers: sets "correct" or "Wrong"   |
+| 1000ms    | Second `setTimeout` starts                               |
+| 3000ms    | Second `setTimeout` triggers: clears answer state (`""`) |
+
+---
+
+### ✅ Use Case:
+
+This pattern is useful when you want to:
+
+* Show a **delay before feedback** (1s delay)
+* Then **display feedback** for a fixed time (e.g., 2s)
+* Then move on or reset
+
+---
+
+### ⚠️ Tip:
+
+This works perfectly, but make sure you **clear timers** (using `clearTimeout`) if the component unmounts early — especially in quiz apps or timers.
+Certainly! Let's break down this line clearly:
+
+```js
+const activeQuestionIndex = answerState === "" ? userAnswers.length : userAnswers.length - 1;
+```
+
+---
+
+### 🔍 What it does:
+
+This line calculates **which question** is **currently being shown** in the quiz — that's the `activeQuestionIndex`.
+
+---
+
+### 🔄 What’s the logic?
+
+It uses a **ternary operator** (`condition ? ifTrue : ifFalse`):
+
+```js
+answerState === "" 
+  ? userAnswers.length 
+  : userAnswers.length - 1;
+```
+
+So:
+
+* ✅ **If `answerState` is an empty string** (`""`):
+
+  * This means we are **ready to move on to the next question** (no feedback being shown).
+  * So it returns `userAnswers.length` — that’s the **next question** index.
+
+* ❌ **If `answerState` is NOT empty** (like `"correct"`, `"wrong"`, or `"answered"`):
+
+  * That means we’re still showing feedback for the **current question**.
+  * So it returns `userAnswers.length - 1` — stay on the **current question**.
+
+---
+
+### 💡 Why this is needed?
+
+Because:
+
+* The `userAnswers` array keeps growing every time a user answers a question.
+* But while showing feedback (like `"correct"` or `"wrong"`), you don’t want to move to the next question *yet*.
+* This line ensures the quiz displays the **correct question** depending on the current state (`answerState`).
+
+---
+
+### 🧠 Example:
+
+Imagine this scenario:
+
+* `userAnswers = ["A", "C"]` (2 answers given)
+* So `userAnswers.length = 2`
+
+#### Case 1: `answerState === ""` (no feedback showing)
+
+```js
+activeQuestionIndex = 2
+```
+
+→ Show 3rd question
+
+#### Case 2: `answerState === "correct"`
+
+```js
+activeQuestionIndex = 1
+```
+
+→ Still showing 2nd question with feedback
+
+---
+
+### ✅ In Simple Words:
+
+> “If no feedback is showing, show the next question.
+> If feedback is being shown, stay on the current question.”
+
+
+```js
+const isSlected = userAnswers[userAnswers.length - 1] === answer;
+```
+
+### ✅ What this line does:
+
+It **checks if the current `answer` is the one the user just selected**.
+
+---
+
+### 💡 Let’s understand it step by step:
+
+#### 🧱 `userAnswers`
+
+This is an array that stores **the user's selected answers** so far.
+
+Example:
+
+```js
+userAnswers = ["Paris", "Blue", "Tiger"];
+```
+
+#### 🔢 `userAnswers.length - 1`
+
+This gives you the **last index** of the array.
+So:
+
+```js
+userAnswers[userAnswers.length - 1] // "Tiger"
+```
+
+#### ❓ `=== answer`
+
+This compares the **last selected answer** with the current `answer` (in `.map()` loop).
+
+---
+
+### 🔄 In context:
+
+In your `map()` over `shuffledAnswers`, you're rendering buttons like:
+
+```js
+{shuffledAnswers.map((answer) => {
+  const isSlected = userAnswers[userAnswers.length - 1] === answer;
+  ...
+})}
+```
+
+So for each `answer`, you're checking:
+
+> Is this the one the user **just clicked**?
+
+If `true`, then:
+
+* Add special CSS class like `"selected"`, `"correct"`, or `"wrong"`.
+
+---
+
+### ✅ Example:
+
+Suppose:
+
+```js
+shuffledAnswers = ["Dog", "Cat", "Tiger"];
+userAnswers = ["Tiger"];
+```
+
+Then as we loop:
+
+* First: `answer = "Dog"` → not equal → `isSlected = false`
+* Second: `answer = "Cat"` → not equal → `isSlected = false`
+* Third: `answer = "Tiger"` → equal → `isSlected = true`
+
+Only `"Tiger"` button will be styled as selected ✅
+
+---
+
+### 🔍 Small Note:
+
+You have a small typo:
+
+```js
+const isSlected // ❌
+```
+
+It should be:
+
+```js
+const isSelected // ✅
+```
+
+(Though the typo won't cause bugs unless you try using `isSelected` later and it’s undefined.)
+
+---
+
