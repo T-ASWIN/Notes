@@ -368,3 +368,55 @@ Without `key`, React can't tell what was removed — it might delete and re-rend
 With `key`, React sees `"A"` is gone, and just updates that part. Much more efficient and **preserves state** (like user inputs).
 
 ---
+
+## ❓ Is `max` a **keyword** in:
+
+### → JavaScript? ❌ No
+
+### → HTML? ✅ Yes (as an attribute)
+
+### → JSX (React)? ✅ It's an **HTML attribute** in JSX
+
+---
+
+### ✅ Explanation:
+
+In your code:
+
+```jsx
+<progress id="question-time" max={timeout} value={remainingTime} />
+```
+
+* This is a **`<progress>` HTML element**, used to show progress (like a loading bar).
+* The attributes:
+
+  * `max={timeout}` → the total time (100% of the bar)
+  * `value={remainingTime}` → how much time is left
+
+These are **not React keywords**, but **standard HTML attributes** being passed in JSX.
+
+---
+
+### ✅ JSX Behavior:
+
+JSX lets you write HTML-like code inside JavaScript, so React understands:
+
+```jsx
+<progress max={timeout} value={remainingTime} />
+```
+
+…as:
+
+```js
+React.createElement("progress", { max: timeout, value: remainingTime });
+```
+
+---
+
+### ✅ Final Answer:
+
+* `max` is **not** a JavaScript or React keyword.
+* It **is a valid HTML attribute** used in `<progress>`, `<input type="range">`, etc.
+* In JSX, it’s passed as a **prop** to the DOM element.
+
+---
