@@ -1,4 +1,4 @@
-
+Memoization is essentially just caching. Imagine a complex function that is slow to run which takes a as an argument. In order to speed up this function, you can cache the results of running the function so that when the function is run with the same inputs you can use the cached value instead of recomputing the value. This would look something like this.
 ---
 
 ## 🧠 Concepts Explained
