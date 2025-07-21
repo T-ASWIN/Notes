@@ -207,3 +207,77 @@ This can cause bugs during reordering or updating the list.
 
 ---
 
+### 🔑 Why we use `key` in React lists
+
+React uses `key` to **identify each item** in a list when rendering and updating. It helps React understand **which items changed, added, or removed**.
+
+---
+
+### ❗ What happens if we use `index` as key?
+
+```jsx
+{items.map((item, index) => (
+  <li key={index}>{item}</li>
+))}
+```
+
+If you use `index` as the key:
+
+* React **might treat changed items as entirely new ones** (even if just one item changed).
+* This causes **unnecessary re-renders or state loss** in child components.
+
+---
+
+### 🔄 Example of the problem:
+
+Imagine this list:
+
+```jsx
+const [items, setItems] = useState(["Apple", "Banana", "Cherry"]);
+```
+
+You render it with:
+
+```jsx
+{items.map((item, index) => (
+  <input key={index} defaultValue={item} />
+))}
+```
+
+Then, you insert a new fruit at the beginning:
+
+```jsx
+setItems(["Mango", "Apple", "Banana", "Cherry"]);
+```
+
+Now React sees:
+
+```diff
+Index: 0    Old: Apple   New: Mango
+Index: 1    Old: Banana  New: Apple
+Index: 2    Old: Cherry  New: Banana
+```
+
+💥 Even though you're **just adding one item**, React thinks **every input changed**, and resets all inputs!
+
+---
+
+### ✅ Better: Use a stable unique key (like an ID)
+
+```jsx
+{items.map((item) => (
+  <li key={item.id}>{item.name}</li>
+))}
+```
+
+This way, React knows which items are truly new or changed.
+
+---
+
+### ✅ Summary:
+
+* ✔ `key` helps React track items in a list.
+* ❌ Avoid using `index` as key **when list order can change**.
+* ✔ Use unique `id` or stable value as `key`.
+
+---
