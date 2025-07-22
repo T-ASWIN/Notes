@@ -117,6 +117,68 @@ console.log(sentence); // "I love React"
 
 ---
 
+### 🔴 `setChosenCount(userValue)` – *Why this can be problematic*
+
+This is a **direct update**:
+
+```js
+setChosenCount(userValue);
+```
+
+* React batches state updates.
+* If you call multiple `setState` one after another, like:
+
+  ```js
+  setChosenCount(chosenCount + 1);
+  setChosenCount(chosenCount + 1);
+  ```
+
+  It might **not increment twice**, because `chosenCount` may still hold the old value (not the updated one).
+
+---
+
+### ✅ `setChosenCount(prevValue => prevValue + 1)` – *Why this is safer and preferred*
+
+This is an **updater function**:
+
+```js
+setChosenCount((prevValue) => prevValue + 1);
+```
+
+* It ensures React uses the **most up-to-date** state (`prevValue`) when updating.
+* Works **reliably even when state updates are batched** or asynchronous.
+
+---
+
+### ✅ Simple analogy:
+
+Think of `setState(value)` as saying:
+
+> “Update the count to this specific number.”
+
+While `setState(prev => prev + 1)` says:
+
+> “Whatever the current count is when you process this, add 1 to it.”
+
+---
+
+### ✅ When is `setCount(value)` okay?
+
+It's **totally fine** if you're:
+
+* only calling `setState` **once**
+* and don't care about **previous value**
+
+Example:
+
+```js
+setChosenCount(10); // perfectly fine
+```
+
+But if your update **depends on the previous state**, always use the updater form.
+
+---
+
 
    * React builds a **component tree** representing the UI.
    * It identifies the **minimal set of changes** by comparing the new virtual DOM with the old one.
