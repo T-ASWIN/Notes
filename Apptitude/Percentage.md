@@ -2,11 +2,6 @@
 
 ### ✅ **Answer Key & Explanations**
 
-1. **What is 12% of 250?**
-   $12\% \times 250 = \frac{12}{100} \times 250 = 30$
-   ✅ **Your Answer: 30** → ✔️ Correct
-
----
 
 2. **Ravi scored 80% in a test of 125 marks. How many marks did he score?**
    $80\% \times 125 = \frac{80}{100} \times 125 = 100$
