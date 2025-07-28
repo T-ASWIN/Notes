@@ -74,3 +74,43 @@
 
 ---
 
+### 🔢 Two Key Percentage Formulas:
+
+1. **Percentage = (x / y) × 100**
+   👉 Used to find **what percent x is of y**
+
+2. **Percentage Change = ((x − y) / y) × 100**
+   👉 Used to find **percentage increase or decrease** from `y` to `x`
+
+
+---
+
+#### **Type 1: (x / y) × 100** – *"What percent..."*
+
+1. **What percent is 45 of 180?**
+
+2. **A student scored 72 marks out of 90. What was their percentage score?**
+
+3. **Out of 250 apples, 75 were rotten. What percentage of apples were good?**
+
+4. **If a shop sold 120 items out of 150 in stock, what percentage was sold?**
+
+5. **What percent of ₹2000 is ₹350?**
+
+---
+
+#### **Type 2: ((x − y) / y) × 100** – *"Percentage increase or decrease"*
+
+6. **The price of a shirt increased from ₹400 to ₹480. What is the percentage increase?**
+
+7. **A mobile’s price dropped from ₹15,000 to ₹12,000. What is the percentage decrease?**
+
+8. **A student improved their marks from 50 to 65. What is the percentage increase?**
+
+9. **If the population of a village decreased from 4,000 to 3,400, what is the percentage decrease?**
+
+10. **Your monthly internet bill increased from ₹600 to ₹750. What is the percentage increase?**
+
+---
+
+
