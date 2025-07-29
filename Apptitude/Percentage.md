@@ -104,7 +104,133 @@
 
 9. **If the population of a village decreased from 4,000 to 3,400, what is the percentage decrease?**
 
+
+
 10. **Your monthly internet bill increased from ₹600 to ₹750. What is the percentage increase?**
+
+---
+
+
+```markdown
+# 💼 Salary-Based Aptitude Questions & Answers
+
+This document contains a set of challenging aptitude questions based on salary, percentage increase/decrease, and comparisons, with full step-by-step answers.
+
+---
+
+## ✅ Question 1
+**An employee's salary is increased by 20% and then again by 10%. What is the total percentage increase in the salary?**
+
+**Answer:**
+\[
+\text{Net Increase} = 20 + 10 + \frac{20 \times 10}{100} = 32\%
+\]
+
+---
+
+## ✅ Question 2
+**Ravi’s salary is 25% more than Kiran’s. By what percentage is Kiran’s salary less than Ravi’s?**
+
+**Answer:**
+Let Kiran = 100 → Ravi = 125  
+\[
+\frac{25}{125} \times 100 = 20\%
+\]  
+**Kiran's salary is 20% less than Ravi's.**
+
+---
+
+## ✅ Question 3
+**A man spends 80% of his salary. His salary is then increased by 25%, but his expenditure increases by 20%. What is the percentage increase in his savings?**
+
+**Answer:**
+- Original salary = 100 → Expense = 80 → Savings = 20  
+- New salary = 125 → New expense = 96 → New savings = 29  
+\[
+\frac{29 - 20}{20} \times 100 = 45\%
+\]  
+**Savings increased by 45%.**
+
+---
+
+## ✅ Question 4
+**An employee’s salary was cut by 20% during the pandemic. Later it was increased by 25%. Is he now earning more, less, or the same as his original salary?**
+
+**Answer:**
+\[
+-20 + 25 + \frac{-20 \times 25}{100} = 0\%
+\]  
+**No net change — the salary is the same.**
+
+---
+
+## ✅ Question 5
+**The ratio of A’s salary to B’s is 5 : 4. If A gets a 20% hike and B gets a 30% hike, what is the new ratio of their salaries?**
+
+**Answer:**
+Let A = 500, B = 400  
+New A = 600, New B = 520  
+\[
+\frac{600}{520} = \frac{15}{13}
+\]  
+**New ratio = 15 : 13**
+
+---
+
+## ✅ Question 6
+**A person spends 75% of his salary. After getting a 20% hike in salary, he increases his expenditure by 10%. What is the percentage increase in his savings?**
+
+**Answer:**
+- Salary = 100 → Expense = 75 → Savings = 25  
+- New salary = 120 → New expense = 82.5 → New savings = 37.5  
+\[
+\frac{37.5 - 25}{25} \times 100 = 50\%
+\]  
+**Savings increased by 50%.**
+
+---
+
+## ✅ Question 7
+**Rahul’s salary is 40% less than Ankit’s salary. By what percentage is Ankit’s salary more than Rahul’s?**
+
+**Answer:**
+Let Ankit = 100 → Rahul = 60  
+\[
+\frac{100 - 60}{60} \times 100 = 66.67\%
+\]  
+**Ankit's salary is 66.67% more than Rahul's.**
+
+---
+
+## ✅ Question 8
+**An employee saves 25% of his salary. If his salary is increased by 40% and his savings increase by 60%, what is the percentage increase in his expenditure?**
+
+**Answer:**
+- Salary = 100 → Savings = 25 → Expense = 75  
+- New salary = 140 → New savings = 40 → New expense = 100  
+\[
+\frac{100 - 75}{75} \times 100 = 33.33\%
+\]  
+**Expenditure increased by 33.33%.**
+
+---
+
+## 📌 Summary Formulas Used
+
+- **Successive % Change**:  
+  \[
+  a + b + \frac{ab}{100}
+  \]
+
+- **% More or Less**:  
+  \[
+  \frac{\text{Difference}}{\text{Base}} \times 100
+  \]
+
+- **% Increase/Decrease in Savings**:  
+  \[
+  \frac{\text{New Savings} - \text{Old Savings}}{\text{Old Savings}} \times 100
+  \]
 
 ---
 
