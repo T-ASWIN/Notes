@@ -234,4 +234,111 @@ Let Ankit = 100 → Rahul = 60
 
 ---
 
+---
+
+### **1. Total Marks from Obtained Marks**
+
+**Question:** A student scores 360 marks and fails by 40 marks. If the pass percentage is 50%, what are the total marks?
+
+**Answer:**
+Let total marks = `x`
+Pass marks = 360 + 40 = 400
+50% of `x` = 400 ⇒ x = **800**
+
+---
+
+### **2. Required Marks to Pass**
+
+**Question:** A student who scores 30% marks fails by 60 marks, while another who scores 40% gets 20 marks more than the pass marks. Find the total marks.
+
+**Answer:**
+Let total marks = `x`
+x/3 + 60 = 2x/5 - 20
+⇒ 5x + 900 = 6x - 300
+⇒ x = **1200**
+
+---
+
+### **3. Subject-Wise Percentage**
+
+**Question:** A student scores 72% in Math, 68% in Physics, and 58% in Chemistry. Each subject is out of 200. What is the overall percentage?
+
+**Answer:**
+Total marks = 600
+Obtained marks = 144 + 136 + 116 = 396
+Percentage = (396 / 600) × 100 = **66%**
+
+---
+
+### **4. Reverse Calculation from Percentage**
+
+**Question:** A student scores 180 marks, which is 45% of the total marks. What are the total marks?
+
+**Answer:**
+45% of `x` = 180 ⇒ x = (180 × 100) / 45 = **400**
+
+---
+
+### **5. Pass and Fail Percentage**
+
+**Question:** In an exam, 80% students passed in English, 85% passed in Math, and 15% failed in both. What percentage of students passed in at least one subject?
+
+**Answer:**
+Passed in at least one = 100 - 15 = **85%**
+
+---
+
+### **6. Overall Average Percentage**
+
+**Question:** A student scored 75% in paper I (200 marks), 60% in paper II (300 marks), and 80% in paper III (500 marks). What is his overall percentage?
+
+**Answer:**
+Total obtained = 150 + 180 + 400 = 730
+Total marks = 1000
+Overall percentage = (730 / 1000) × 100 = **73%**
+
+---
+
+### **7. Percentage Increase in Marks**
+
+**Question:** A student scored 240 marks out of 400. How many more marks does he need to increase his percentage from 60% to 75%?
+
+**Answer:**
+To get 75%: 0.75 × 400 = 300
+Required increase = 300 - 240 = **60 marks**
+
+---
+
+### **8. Two Students Comparison**
+
+**Question:** Student B scored 250 marks. If Student A scored 20% more marks than B, how many marks did A score?
+
+**Answer:**
+20% of 250 = 50
+A = 250 + 50 = **300 marks**
+
+---
+
+### **9. Combined Result Calculation**
+
+**Question:** In a class of 40 students, boys average 65% and girls average 51.67%. If there are 25 boys, what is the average percentage of the class?
+
+**Answer:**
+Boys marks = 25 × 65 = 1625
+Girls (15 students): 15 × 51.67 ≈ 775
+Total = 1625 + 775 = 2400
+Average % = (2400 / 40) = **60%**
+
+---
+
+### **10. Failed and Passed Students**
+
+**Question:** 85% students passed in Math, 80% in English, and 10% failed in both. What percent passed in at least one subject?
+
+**Answer:**
+Passed in at least one = 100 - 10 = **90%**
+
+---
+
+
 
