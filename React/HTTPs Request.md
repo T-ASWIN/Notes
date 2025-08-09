@@ -283,4 +283,122 @@ Here are some tools to help developers debug or test HTTP:
 | 503  | Service Unavailable   | Server          | Server maintenance                 |
 
 ---
+```js
+let isHalwaThere = false;
+
+function waitInQueue() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (isHalwaThere) {
+        resolve("Buy 1/2 kg halwa");
+      } else {
+        reject("Not Buy halwa");
+      }
+    }, 10000);
+  });
+}
+
+function buyHalwa() {
+  waitInQueue()
+    .then((message) => {
+      console.log(message);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      console.log("Go Home");
+    });
+}
+
+buyHalwa();
+console.log("hello");
+```
+
+
+---
+
+## **1. What are `async` and `await`?**
+
+They are just **syntax sugar** for working with **Promises** in a cleaner, more readable way.
+Instead of chaining `.then().catch()`, you can write code that *looks* synchronous but is still asynchronous.
+
+---
+
+### **How it works**
+
+* `async` → put it before a function to tell JavaScript **"this function will return a Promise"**.
+* `await` → pause inside an `async` function **until the Promise is resolved or rejected**.
+
+---
+
+### **Example without async/await**:
+
+```javascript
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+```
+
+---
+
+### **Same Example with async/await**:
+
+```javascript
+async function getPost() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getPost();
+```
+
+Looks much cleaner, right?
+
+---
+
+## **2. Why use async/await?**
+
+✅ More readable code (looks like normal step-by-step instructions)
+✅ Easier error handling with `try...catch`
+✅ No messy `.then()` chaining
+
+---
+
+## **3. Real React Example with async/await**
+
+```jsx
+import { useState, useEffect } from "react";
+
+export default function JokeFetcher() {
+  const [joke, setJoke] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchJoke() {
+      try {
+        const res = await fetch("https://official-joke-api.appspot.com/random_joke");
+        const data = await res.json();
+        setJoke(`${data.setup} - ${data.punchline}`);
+      } catch (err) {
+        setJoke("Failed to load joke 😢");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchJoke();
+  }, []);
+
+  return loading ? <p>Loading...</p> : <p>{joke}</p>;
+}
+```
+
+---
+
 
