@@ -209,4 +209,42 @@ You’d see:
 ```
 
 ---
+`onBlur` is an event that **runs when an input loses focus** — meaning the user clicks or tabs away from it.
+
+---
+
+### Example:
+
+1. You click in the **Email** input → it’s **focused**.
+2. You type something.
+3. You click somewhere else (or press Tab) → the input **loses focus** → **`onBlur` fires**.
+
+---
+
+### Why use it?
+
+* Good for **validation after user finishes typing** (so you don’t show errors while they’re still typing).
+* Can be used to save data when leaving a field.
+
+---
+
+### In your code:
+
+```jsx
+onBlur={() => handleInputBlur("email")}
+```
+
+When the user leaves the Email field:
+
+* `handleInputBlur("email")` runs.
+* This sets `didEdit.email` to `true`, meaning *"Yes, the user interacted with this field"*.
+* Then your validation (`emailIsValid`) checks:
+
+```js
+didEdit.email && !enteredValues.email.includes("@")
+```
+
+So the **"Please enter valid email"** message only appears **after** the user leaves the field without typing a valid email.
+
+---
 
