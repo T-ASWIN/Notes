@@ -248,3 +248,60 @@ So the **"Please enter valid email"** message only appears **after** the user le
 
 ---
 
+Here’s a list of the **most commonly used built-in HTML5 form validation attributes** that work in **all major web browsers** (Chrome, Edge, Firefox, Safari, etc.):
+
+---
+
+### **Basic Validation**
+
+| Attribute   | What it does                               | Example                                   |
+| ----------- | ------------------------------------------ | ----------------------------------------- |
+| `required`  | Field must not be empty.                   | `<input type="text" required>`            |
+| `minlength` | Minimum number of characters allowed.      | `<input type="text" minlength="5">`       |
+| `maxlength` | Maximum number of characters allowed.      | `<input type="text" maxlength="10">`      |
+| `pattern`   | Custom regex pattern the value must match. | `<input type="text" pattern="[A-Za-z]+">` |
+
+---
+
+### **Number Validation**
+
+| Attribute | What it does                                 | Example                            |
+| --------- | -------------------------------------------- | ---------------------------------- |
+| `min`     | Minimum numeric value allowed.               | `<input type="number" min="1">`    |
+| `max`     | Maximum numeric value allowed.               | `<input type="number" max="100">`  |
+| `step`    | Step interval allowed (useful for decimals). | `<input type="number" step="0.5">` |
+
+---
+
+### **Type-Specific Validation**
+
+| Input Type                                 | Built-in validation                         | Example                                  |
+| ------------------------------------------ | ------------------------------------------- | ---------------------------------------- |
+| `type="email"`                             | Must be a valid email format.               | `<input type="email">`                   |
+| `type="url"`                               | Must be a valid URL format.                 | `<input type="url">`                     |
+| `type="tel"`                               | No fixed validation, but can use `pattern`. | `<input type="tel" pattern="[0-9]{10}">` |
+| `type="date"` / `datetime-local` / `month` | Valid date/time only.                       | `<input type="date">`                    |
+
+---
+
+### **Other Useful Attributes**
+
+| Attribute  | What it does                                           | Example                                |
+| ---------- | ------------------------------------------------------ | -------------------------------------- |
+| `multiple` | Allows multiple values (e.g., multiple files, emails). | `<input type="file" multiple>`         |
+| `accept`   | Restricts file types in file inputs.                   | `<input type="file" accept="image/*">` |
+| `size`     | Visible width of the field (not a limit).              | `<input type="text" size="30">`        |
+| `readonly` | Makes the field uneditable but still submitted.        | `<input type="text" readonly>`         |
+| `disabled` | Makes the field uneditable and **not** submitted.      | `<input type="text" disabled>`         |
+
+---
+
+💡 **Browser behavior:**
+
+* These validations work **before** the form is submitted.
+* If a field fails validation, the browser shows a built-in error message (which you can customize with JavaScript).
+
+---
+
+
+
