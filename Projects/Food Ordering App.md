@@ -148,3 +148,93 @@ Here, `age: 22` from `obj1` got overwritten by `age: 23` from `obj2`.
 
 ---
 
+
+---
+
+### 🔹 What is `reduce()`?
+
+`reduce()` is an **array method** in JavaScript that takes all the values in an array and **reduces them into a single result** (number, string, object, etc.).
+
+It works like this:
+
+```js
+array.reduce((accumulator, currentValue) => {
+  // combine accumulator and currentValue
+  return updatedValue;
+}, initialValue);
+```
+
+* **accumulator** → stores the running total/result.
+* **currentValue** → the current element in the array.
+* **initialValue** → the starting value for the accumulator.
+
+---
+
+### 🔹 Simple Example
+
+Count the sum of numbers:
+
+```js
+const numbers = [1, 2, 3, 4];
+
+const sum = numbers.reduce((acc, curr) => {
+  return acc + curr;
+}, 0);
+
+console.log(sum); // 10
+```
+
+👉 Flow:
+
+* Start with `acc = 0`
+* (0 + 1) → 1
+* (1 + 2) → 3
+* (3 + 3) → 6
+* (6 + 4) → 10 ✅
+
+---
+
+### 🔹 Your Example (Cart Items)
+
+```js
+const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
+  return totalNumberOfItems + item.quantity;
+}, 0);
+```
+
+👉 Imagine your cart looks like this:
+
+```js
+cartCtx.items = [
+  { name: "Burger", quantity: 2 },
+  { name: "Pizza", quantity: 1 },
+  { name: "Coke", quantity: 3 }
+];
+```
+
+**Step by step reduce:**
+
+* Start: `totalNumberOfItems = 0`
+* Add Burger (2) → 0 + 2 = 2
+* Add Pizza (1) → 2 + 1 = 3
+* Add Coke (3) → 3 + 3 = 6
+
+✅ Final result: `6`
+
+So it gives you **total items in the cart**.
+
+---
+
+### 🔹 Real-world Use Cases of `reduce()`
+
+1. **Sum of numbers** → `reduce` is great for totals.
+2. **Counting items** → e.g., cart items in your code.
+3. **Flattening arrays** → `[[1,2],[3,4]] → [1,2,3,4]`.
+4. **Grouping data** → count how many times each item appears.
+5. **Building objects** → transform arrays into objects.
+
+---
+
+⚡In short:
+👉 `reduce()` = a smart way to loop through an array and build **one final value** from it.
+
